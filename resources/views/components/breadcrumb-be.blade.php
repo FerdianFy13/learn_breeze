@@ -3,7 +3,8 @@
         <div class="card-body">
             <div class="d-sm-flex d-block align-items-center justify-content-between">
                 <div class="mb-sm-0">
-                    <h5 class="card-title fw-semibold">{{ $title }}</h5>
+                    <h5 class="card-title fw-semibold">{{ $title == 'Dashboard' ? 'Dashboard' : 'Dashboard/' . $title }}
+                    </h5>
                 </div>
             </div>
         </div>
