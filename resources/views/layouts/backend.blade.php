@@ -4,9 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize</title>
+    <title>{{ $title }} || Modernize</title>
+
+    {{-- icon --}}
     <link rel="shortcut icon" type="image/png" href="{{ asset('dist/images/logos/favicon.png') }}" />
+    {{-- end icon --}}
+
+    {{-- css --}}
     <link rel="stylesheet" href="{{ asset('dist/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/css/data_tables.css') }}">
+    {{-- end css --}}
+
 </head>
 
 <body>
@@ -27,6 +35,12 @@
             {{-- end navbar --}}
 
             <div class="container-fluid">
+                {{-- breadcrumb --}}
+                @section('breadcrumb')
+                @include('components.breadcrumb-be')
+                @show
+                {{-- end breadcrumb --}}
+
                 {{-- content --}}
                 @yield('backend_content')
                 {{-- end content --}}
@@ -47,6 +61,9 @@
     </script>
     <script src="{{ asset('dist/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('dist/js/dashboard.js') }}"></script>
+    <script src="{{ asset('dist/js/tables.js') }}"></script>
+    <script src="{{ asset('dist/js/dataTables.min.js') }}"></script>
+    <script src="{{ asset('dist/js/dataTables.bootstrap5.min.js') }}"></script>
 </body>
 
 </html>
