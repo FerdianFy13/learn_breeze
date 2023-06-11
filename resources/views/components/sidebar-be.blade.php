@@ -27,7 +27,8 @@
                     <span class="hide-menu">Post</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/product" aria-expanded="false">
+                    <a class="sidebar-link {{ Request::is('product*') ? 'sidebar-link active' : '' }}" href="/product"
+                        aria-expanded="false">
                         <span>
                             <i class="ti ti-shopping-cart"></i>
                         </span>

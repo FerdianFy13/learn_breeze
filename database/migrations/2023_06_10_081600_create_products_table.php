@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('category');
             $table->enum('available', ['Enabled', 'Disabled']);
             $table->integer('stock');
-            $table->string('image');
+            $table->string('image', 255)->nullable();
             $table->date('expiration_date');
             $table->integer('weight');
             $table->string('origin_country');

@@ -12,7 +12,10 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('dist/css/styles.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('dist/css/data_tables.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/css/data_tables.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('dist/js/ckeditor.js') }}"></script>
     {{-- end css --}}
 
 </head>
