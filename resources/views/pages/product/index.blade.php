@@ -54,7 +54,8 @@
                                                     More
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
-                                                    <li><a class="dropdown-item" href="/product/create"><i
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('product.show', $item->id) }}"><i
                                                                 class="ti ti-info-circle me-1 text-black"></i>Detail</a>
                                                     </li>
                                                     <form id="formDelete" method="post"

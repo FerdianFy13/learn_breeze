@@ -45,13 +45,13 @@
                             <div class="mb-3 row">
                                 <label for="inputAvailable" class="col-sm-2 col-form-label">Available</label>
                                 <div class="col-sm-10">
-                                    <div class="form-check form-check-inline">
+                                    <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="available" id="inputEnabled"
                                             value="Enabled" required checked
                                             {{ old('available') == 'Enabled' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="inputEnabled">Enabled</label>
                                     </div>
-                                    <div class="form-check form-check-inline">
+                                    <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="available" id="inputDisabled"
                                             value="Disabled" required {{ old('available') == 'Disabled' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="inputDisabled">Disabled</label>

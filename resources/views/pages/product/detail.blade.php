@@ -1,0 +1,105 @@
+@extends('layouts.backend')
+
+@section('backend_content')
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-strech">
+            <div class="card w-100">
+                <div class="card-body">
+                    <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                        <div class="mb-3 mb-sm-0">
+                            <h5 class="card-title fw-semibold">Detail Table Product</h5>
+                        </div>
+                        <div class="float-end">
+                            <a href="/product" class="btn btn-outline-dark me-2">Back</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mb-3 row">
+                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" required name="product_name"
+                                    value="{{ old('product_name', $data->product_name) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="description" rows="3" id="inputDescription" required readonly>{!! strip_tags($data->description) !!}</textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputPrice" required name="price"
+                                    value="{{ old('price', $data->price) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputCategory" required name="category"
+                                    value="{{ old('category', $data->category) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputAvailable" class="col-sm-2 col-form-label">Available</label>
+                            <div class="col-sm-10">
+                                <div class="form-check form-check-inline mt-2">
+                                    <input class="form-check-input" type="radio" name="available" id="inputEnabled"
+                                        value="Enabled" required checked>
+                                    <label class="form-check-label" for="inputEnabled">{{ $data->available }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputStock" class="col-sm-2 col-form-label">Stock</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputStock" required name="stock"
+                                    value="{{ old('stock', $data->stock) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputExpiration" class="col-sm-2 col-form-label">Expiration</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="inputExpiration" required
+                                    name="expiration_date" value="{{ old('expiration_date', $data->expiration_date) }}"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputWeight" class="col-sm-2 col-form-label">Weight</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputWeight" required name="weight"
+                                    value="{{ old('weight', $data->weight) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="inputCountry" class="col-sm-2 col-form-label">Country</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputCountry" required name="origin_country"
+                                    value="{{ old('origin_country', $data->origin_country) }}" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <img class="img-preview img-fluid col-sm-7 mb-3"
+                                    src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function adjustTextareaRows() {
+            const textarea = document.getElementById('inputDescription');
+            textarea.rows = textarea.value.split('\n').length;
+        }
+
+        window.addEventListener('DOMContentLoaded', adjustTextareaRows);
+        document.getElementById('inputDescription').addEventListener('input', adjustTextareaRows);
+    </script>
+@endsection
