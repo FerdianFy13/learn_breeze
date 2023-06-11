@@ -61,7 +61,7 @@
                                                         action="{{ route('product.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
-                                                        <li><button class="dropdown-item" id="deleteButton"><i
+                                                        <li><button class="dropdown-item deleteButton"><i
                                                                     class="ti ti-trash text-black me-1"
                                                                     onclick="confirm?"></i>Delete</button>
                                                         </li>
@@ -91,7 +91,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#deleteButton').click(function(e) {
+            $('.deleteButton').click(function(e) {
                 e.preventDefault();
 
                 Swal.fire({

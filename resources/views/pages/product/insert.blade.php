@@ -133,14 +133,21 @@
         }
 
         var inputCountry = document.getElementById('inputCountry');
+        var inputName = document.getElementById('inputName');
+
+        inputName.addEventListener('input', function(e) {
+            var inputValue = e.target.value;
+            var sanitizedValue = sanitizeInputChar(inputValue);
+            e.target.value = sanitizedValue;
+        })
 
         inputCountry.addEventListener('input', function(e) {
             var inputValue = e.target.value;
-            var sanitizedValue = sanitizeInput(inputValue);
+            var sanitizedValue = sanitizeInputChar(inputValue);
             e.target.value = sanitizedValue;
         });
 
-        function sanitizeInput(inputValue) {
+        function sanitizeInputChar(inputValue) {
             var sanitizedValue = inputValue.replace(/[^A-Za-z\s]/g, '');
             return sanitizedValue;
         }
