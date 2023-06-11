@@ -16,27 +16,30 @@
                             <div class="mb-3 row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName" required name="product_name">
+                                    <input type="text" class="form-control" id="inputName" required name="product_name"
+                                        value="{{ old('product_name') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="hidden" name="description" id="inputDescription"
-                                        required>
+                                        required value="{{ old('description') }}">
                                     <trix-editor input="inputDescription"></trix-editor>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="inputPrice" required name="price">
+                                    <input type="number" class="form-control" id="inputPrice" required name="price"
+                                        value="{{ old('price') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputCategory" required name="category">
+                                    <input type="text" class="form-control" id="inputCategory" required name="category"
+                                        value="{{ old('category') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -44,12 +47,13 @@
                                 <div class="col-sm-10">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="available" id="inputEnabled"
-                                            value="Enabled" required checked>
+                                            value="Enabled" required checked
+                                            {{ old('available') == 'Enabled' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="inputEnabled">Enabled</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="available" id="inputDisabled"
-                                            value="Disabled" required>
+                                            value="Disabled" required {{ old('available') == 'Disabled' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="inputDisabled">Disabled</label>
                                     </div>
                                 </div>
@@ -57,34 +61,37 @@
                             <div class="mb-3 row">
                                 <label for="inputStock" class="col-sm-2 col-form-label">Stock</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="inputStock" required name="stock">
+                                    <input type="number" class="form-control" id="inputStock" required name="stock"
+                                        value="{{ old('stock') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputExpiration" class="col-sm-2 col-form-label">Expiration</label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" id="inputExpiration" required
-                                        name="expiration_date">
+                                        name="expiration_date" value="{{ old('expiration_date') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputWeight" class="col-sm-2 col-form-label">Weight</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="inputWeight" required name="weight">
+                                    <input type="number" class="form-control" id="inputWeight" required name="weight"
+                                        value="{{ old('weight') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputCountry" class="col-sm-2 col-form-label">Country</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="inputCountry" required
-                                        name="origin_country">
+                                        name="origin_country" value="{{ old('origin_country') }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                                 <div class="col-sm-10">
-                                    <input type="file" accept=".jpg, .png, .jpeg" class="form-control" id="inputImage"
-                                        onchange="previewImage()" required name="image">
+                                    <input type="file" accept=".jpg, .png, .jpeg" class="form-control"
+                                        id="inputImage" onchange="previewImage()" required name="image"
+                                        value="{{ old('image') }}">
                                     <div class="image-preview-container mt-3">
                                         <button type="button" onclick="resetImage()" class="btn btn-secondary mb-2"
                                             id="resetButton" style="display: none;">Reset</button>
