@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div>
-                        <form id="formInsert" method="POST" action="/product" enctype="multipart/form-data">
+                        <form id="formInsert" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3 row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>

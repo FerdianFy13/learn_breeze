@@ -38,7 +38,7 @@ class ProductController extends Controller
         try {
             $validation = $request->validate([
                 'product_name' => 'required|unique:products|max:255|min:3',
-                'description' => 'required|max:255',
+                'description' => 'required|max:255|min:3',
                 'price' => 'required|min:3|max:10',
                 'category' => 'required',
                 'available' => 'required',
@@ -96,8 +96,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $query = Product::findOrFail($id)->delete();
+
+        if ($query) {
+            return response()->json(['success' => 'Product deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Product deleted failed'], 500);
+        }
     }
 }
