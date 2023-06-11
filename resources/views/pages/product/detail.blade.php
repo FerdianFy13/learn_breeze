@@ -8,9 +8,7 @@
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
                             <h5 class="card-title fw-semibold">Detail Table Product</h5>
-                        </div>
-                        <div class="float-end">
-                            <a href="/product" class="btn btn-outline-dark me-2">Back</a>
+                            <a href="/product" class="btn btn-outline-dark me-2 mt-3">Back</a>
                         </div>
                     </div>
                     <div>
@@ -101,5 +99,14 @@
 
         window.addEventListener('DOMContentLoaded', adjustTextareaRows);
         document.getElementById('inputDescription').addEventListener('input', adjustTextareaRows);
+
+        const inputFields = document.querySelectorAll('.form-control');
+
+        inputFields.forEach(function(input) {
+            input.setAttribute('readonly', 'readonly');
+            input.addEventListener('focus', function() {
+                this.blur();
+            });
+        });
     </script>
 @endsection
