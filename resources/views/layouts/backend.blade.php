@@ -13,10 +13,14 @@
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('dist/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/css/data_tables.css') }}" />
+    {{-- end css --}}
+
+    {{-- cdn --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('dist/js/ckeditor.js') }}"></script>
-    {{-- end css --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+    {{-- end cdn --}}
 
 </head>
 
@@ -26,21 +30,21 @@
 
         {{-- sidebar --}}
         @section('sidebar_be')
-        @include('components.sidebar-be')
+            @include('components.sidebar-be')
         @show
         {{-- end sidebar --}}
 
         <div class="body-wrapper">
             {{-- navbar --}}
             @section('navigation_be')
-            @include('components.navigation-be')
+                @include('components.navigation-be')
             @show
             {{-- end navbar --}}
 
             <div class="container-fluid">
                 {{-- breadcrumb --}}
                 @section('breadcrumb')
-                @include('components.breadcrumb-be')
+                    @include('components.breadcrumb-be')
                 @show
                 {{-- end breadcrumb --}}
 
@@ -50,7 +54,7 @@
 
                 {{-- footer --}}
                 @section('footer_be')
-                @include('components.footer-be')
+                    @include('components.footer-be')
                 @show
                 {{-- end footer --}}
             </div>
@@ -60,8 +64,7 @@
     <script src="{{ asset('dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('dist/js/app.min.js') }}"></script>
-    <script src="{{ asset('dist/libs/apexcharts/dist/apexcharts.min.js') }}">
-    </script>
+    <script src="{{ asset('dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('dist/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('dist/js/dashboard.js') }}"></script>
     <script src="{{ asset('dist/js/tables.js') }}"></script>

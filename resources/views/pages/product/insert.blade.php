@@ -22,7 +22,9 @@
                             <div class="mb-3 row">
                                 <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputDescription" name="description"></textarea>
+                                    <input class="form-control" type="hidden" name="description" id="inputDescription"
+                                        required>
+                                    <trix-editor input="inputDescription"></trix-editor>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -102,13 +104,6 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            ClassicEditor
-                .create(document.querySelector('#inputDescription'))
-                .then(editor => {})
-                .catch(error => {});
-        });
-
         function previewImage() {
             const image = document.querySelector('#inputImage');
             const previewImages = document.querySelector('#imagePreview');
@@ -135,6 +130,46 @@
             input.value = null;
             preview.src = '';
             resetButton.style.display = 'none';
+        }
+
+        var inputCountry = document.getElementById('inputCountry');
+
+        inputCountry.addEventListener('input', function(e) {
+            var inputValue = e.target.value;
+            var sanitizedValue = sanitizeInput(inputValue);
+            e.target.value = sanitizedValue;
+        });
+
+        function sanitizeInput(inputValue) {
+            var sanitizedValue = inputValue.replace(/[^A-Za-z\s]/g, '');
+            return sanitizedValue;
+        }
+
+        var inputPrice = document.getElementById('inputPrice');
+        var inputStock = document.getElementById('inputStock');
+        var inputWeight = document.getElementById('inputWeight');
+
+        inputPrice.addEventListener('input', function(e) {
+            var inputValue = e.target.value;
+            var sanitizedValue = sanitizeInput(inputValue);
+            e.target.value = sanitizedValue;
+        });
+
+        inputStock.addEventListener('input', function(e) {
+            var inputValue = e.target.value;
+            var sanitizedValue = sanitizeInput(inputValue);
+            e.target.value = sanitizedValue;
+        });
+
+        inputWeight.addEventListener('input', function(e) {
+            var inputValue = e.target.value;
+            var sanitizedValue = sanitizeInput(inputValue);
+            e.target.value = sanitizedValue;
+        });
+
+        function sanitizeInput(inputValue) {
+            var sanitizedValue = inputValue.replace(/\D/g, '');
+            return sanitizedValue;
         }
     </script>
 
