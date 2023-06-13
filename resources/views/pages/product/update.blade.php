@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div>
-                        <form id="formInsert" enctype="multipart/form-data" method="patch"
+                        <form id="formInsert" enctype="multipart/form-data" method="post"
                             action="{{ route('product.update', $data->id) }}">
                             @method('patch')
                             @csrf
@@ -49,13 +49,14 @@
                                 <div class="col-sm-10">
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="available" id="inputEnabled"
-                                            value="Enabled" required checked
-                                            {{ old('available') == 'Enabled' ? 'checked' : '' }}>
+                                            value="Enabled" required
+                                            {{ old('available', $data->available) == 'Enabled' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="inputEnabled">Enabled</label>
                                     </div>
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="available" id="inputDisabled"
-                                            value="Disabled" required {{ old('available') == 'Disabled' ? 'checked' : '' }}>
+                                            value="Disabled" required
+                                            {{ old('available', $data->available) == 'Disabled' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="inputDisabled">Disabled</label>
                                     </div>
                                 </div>
@@ -91,21 +92,19 @@
                             <div class="row">
                                 <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                                 <div class="col-sm-10">
-                                    <input type="hidden" accept=".jpg, .png, .jpeg" class="form-control"
-                                        id="inputImage" onchange="previewImage()" required name="imageold"
+                                    <input type="file" accept=".jpg, .png, .jpeg" class="form-control"
+                                        id="inputImage" onchange="previewImage()" name="image"
                                         value="{{ old('image', $data->image) }}">
-                                    <button type="button" onclick="changeImage()" class="btn btn-primary"
-                                        id="changeImageButton">Change Image</button>
                                     <div class="image-preview-container">
                                         <button type="button" onclick="resetImage()" class="btn btn-secondary mb-2 mt-3"
-                                            id="resetButton" style="display: none;">Reset</button>
-                                        <img class="img-preview img-fluid col-sm-7 mb-3" id="imagePreview">
+                                            id="resetButton">Reset</button>
+                                        <img class="img-preview img-fluid col-sm-7 mb-3 mt-2" id="imagePreview">
                                         @if (Storage::exists($data->image))
-                                            <img class="img-preview img-fluid col-sm-7 mb-3"
-                                                src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                                            <img class="img-preview img-fluid col-sm-7 mb-3 mt-2"
+                                                src="{{ asset('storage/' . $data->image) }}" id="imagePreviewDefault">
                                         @else
-                                            <input type="text" class="form-control mb-3" id="imageHidden" required
-                                                name="origin_country" value="Image not found in storage" readonly>
+                                            <p class="form-control" id="previewCondition">Image not found in directory
+                                            </p>
                                         @endif
                                     </div>
                                 </div>
@@ -122,19 +121,11 @@
     </div>
 
     <script>
-        function changeImage() {
-            document.getElementById('imageHidden').type = 'hidden';
-            var inputImage = document.getElementById("inputImage");
-            var changeImageButton = document.getElementById("changeImageButton");
-            inputImage.type = "file";
-            inputImage.style.display = "block";
-            changeImageButton.style.display = "none";
-        }
-
         function previewImage() {
             const image = document.querySelector('#inputImage');
             const previewImages = document.querySelector('#imagePreview');
             const resetButton = document.querySelector('#resetButton');
+            const imagePreviewDefault = document.getElementById("imagePreviewDefault");
 
             if (image.files && image.files[0]) {
                 const ofReader = new FileReader();
@@ -143,6 +134,7 @@
                 ofReader.onload = function(oFREvent) {
                     previewImages.src = oFREvent.target.result;
                     resetButton.style.display = 'block';
+                    imagePreviewDefault.style.display = 'none';
                 };
             } else {
                 previewImages.src = '';
@@ -153,9 +145,11 @@
         function resetImage() {
             const input = document.getElementById('inputImage');
             const preview = document.getElementById('imagePreview');
+            const preview2 = document.getElementById('imagePreviewDefault');
             const resetButton = document.getElementById('resetButton');
             input.value = null;
             preview.src = '';
+            preview2.src = '';
             resetButton.style.display = 'none';
         }
 
@@ -207,7 +201,7 @@
         }
     </script>
 
-    {{-- <script>
+    <script>
         $('#formInsert').submit(function(e) {
             e.preventDefault();
 
@@ -227,7 +221,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         url: $('#formInsert').attr('action'),
-                        type: 'PUT',
+                        type: 'POST',
                         data: formData,
                         dataType: 'json',
                         contentType: false,
@@ -270,5 +264,5 @@
                 }
             });
         });
-    </script> --}}
+    </script>
 @endsection

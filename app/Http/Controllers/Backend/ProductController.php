@@ -48,7 +48,7 @@ class ProductController extends Controller
                 'expiration_date' => 'required',
                 'weight' => 'required|min:1|max:10',
                 'origin_country' => 'required|min:3|max:255',
-                'image' => 'required|image|file|max:1020',
+                'image' => 'required|image|file|max:4020',
             ]);
 
             if ($request->file('image')) {
@@ -115,7 +115,7 @@ class ProductController extends Controller
                 'expiration_date' => 'sometimes|required',
                 'weight' => 'sometimes|required|min:1|max:10',
                 'origin_country' => 'sometimes|required|min:3|max:255',
-                'image' => 'sometimes|required|image|file|max:1020',
+                'image' => 'sometimes|required|image|file|max:4020',
             ]);
 
             $product = Product::findOrFail($id);

@@ -30,12 +30,10 @@
                                 <tr>
                                     <th>Actions</th>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Price</th>
                                     <th>Category</th>
                                     <th>Available</th>
                                     <th>Stock</th>
-                                    <th>Image</th>
                                     <th>Weight</th>
                                     <th>Country</th>
                                     <th>Expiration</th>
@@ -70,13 +68,13 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td>{{ $item->product_name }}</td>
-                                        <td>{!! $item->description !!}</td>
+                                        <td>{{ Str::limit($item->product_name, 20) }}</td>
+                                        {{-- <td>{!! $item->description !!}</td> --}}
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->category }}</td>
                                         <td>{{ $item->available }}</td>
                                         <td>{{ $item->stock }}</td>
-                                        <td>{{ $item->image }}</td>
+                                        {{-- <td>{{ $item->image }}</td> --}}
                                         <td>{{ $item->weight }}</td>
                                         <td>{{ $item->origin_country }}</td>
                                         <td>{{ $item->expiration_date }}</td>
