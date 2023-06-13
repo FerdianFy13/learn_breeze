@@ -11,7 +11,9 @@
                         </div>
                     </div>
                     <div>
-                        <form id="formInsert" enctype="multipart/form-data">
+                        <form id="formInsert" enctype="multipart/form-data" method="patch"
+                            action="{{ route('product.update', $data->id) }}">
+                            @method('patch')
                             @csrf
                             <div class="mb-3 row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -97,8 +99,13 @@
                                     <div class="image-preview-container mt-3">
                                         <button type="button" onclick="resetImage()" class="btn btn-secondary mb-2"
                                             id="resetButton" style="display: none;">Reset</button>
-                                        <img class="img-preview img-fluid col-sm-7 mb-3"
-                                            src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                                        @if (Storage::exists($data->image))
+                                            <img class="img-preview img-fluid col-sm-7 mb-3"
+                                                src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                                        @else
+                                            <input type="text" class="form-control mb-3" id="imageHidden" required
+                                                name="origin_country" value="Image not found in storage" readonly>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -115,6 +122,7 @@
 
     <script>
         function changeImage() {
+            document.getElementById('imageHidden').type = 'hidden';
             var inputImage = document.getElementById("inputImage");
             var changeImageButton = document.getElementById("changeImageButton");
             inputImage.type = "file";
@@ -198,7 +206,7 @@
         }
     </script>
 
-    <script>
+    {{-- <script>
         $('#formInsert').submit(function(e) {
             e.preventDefault();
 
@@ -217,8 +225,8 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/product',
-                        type: 'POST',
+                        url: $('#formInsert').attr('action'),
+                        type: 'PUT',
                         data: formData,
                         dataType: 'json',
                         contentType: false,
@@ -226,7 +234,7 @@
                         success: function(response) {
                             Swal.fire({
                                 title: 'Success',
-                                text: 'Insert data successfully',
+                                text: 'Update data successfully',
                                 icon: 'success',
                                 confirmButtonColor: '#0F345E',
                             }).then((result) => {
@@ -251,7 +259,7 @@
                             } else {
                                 Swal.fire({
                                     title: 'Error',
-                                    text: 'Insert data failed',
+                                    text: 'Update data failed',
                                     icon: 'error',
                                     confirmButtonColor: '#0F345E',
                                 });
@@ -261,5 +269,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection

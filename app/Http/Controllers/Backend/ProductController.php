@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class ProductController extends Controller
@@ -98,9 +100,55 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'product_name' => [
+                    'sometimes', 'required', Rule::unique('products')->ignore($id), 'max:255', 'min:3',
+                ],
+                'description' => 'sometimes|required|max:255|min:3',
+                'price' => 'sometimes|required|min:3|max:10',
+                'category' => 'sometimes|required',
+                'available' => 'sometimes|required',
+                'stock' => 'sometimes|required|min:1|max:10',
+                'expiration_date' => 'sometimes|required',
+                'weight' => 'sometimes|required|min:1|max:10',
+                'origin_country' => 'sometimes|required|min:3|max:255',
+                'image' => 'sometimes|required|image|file|max:1020',
+            ]);
+
+            $product = Product::findOrFail($id);
+            $oldImage = $product->image;
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('product_images');
+            }
+
+            $product->update($validation);
+
+            if ($request->file('image') && $oldImage) {
+                Storage::delete($oldImage); // Hapus file gambar lama
+            }
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('product_images');
+            }
+
+            if ($product) {
+                return response()->json(['success' => 'Product update successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to update product'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**

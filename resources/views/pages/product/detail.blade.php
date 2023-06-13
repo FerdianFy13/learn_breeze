@@ -78,12 +78,12 @@
                         <div class="row">
                             <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                             <div class="col-sm-10">
-                                @if ($data->image > 0)
+                                @if (Storage::exists($data->image))
                                     <img class="img-preview img-fluid col-sm-7 mb-3"
                                         src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
                                 @else
-                                    <input type="text" class="form-control" id="inputCountry" required name="image"
-                                        value="Data image is null not value" readonly>
+                                    <input type="text" class="form-control" id="inputCountry" required
+                                        name="origin_country" value="Image not found in storage" readonly>
                                 @endif
                             </div>
                         </div>
