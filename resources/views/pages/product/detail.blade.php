@@ -42,11 +42,8 @@
                         <div class="mb-3 row">
                             <label for="inputAvailable" class="col-sm-2 col-form-label">Available</label>
                             <div class="col-sm-10">
-                                <div class="form-check form-check-inline mt-2">
-                                    <input class="form-check-input" type="radio" name="available" id="inputEnabled"
-                                        value="Enabled" required checked>
-                                    <label class="form-check-label" for="inputEnabled">{{ $data->available }}</label>
-                                </div>
+                                <input type="text" class="form-control" id="inputStock" required name="available"
+                                    value="{{ old('available', $data->available) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -81,8 +78,13 @@
                         <div class="row">
                             <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                             <div class="col-sm-10">
-                                <img class="img-preview img-fluid col-sm-7 mb-3"
-                                    src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                                @if ($data->image > 0)
+                                    <img class="img-preview img-fluid col-sm-7 mb-3"
+                                        src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                                @else
+                                    <input type="text" class="form-control" id="inputCountry" required name="image"
+                                        value="Data image is null not value" readonly>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -45,7 +45,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="action-links">
-                                            <a href="/product/create"
+                                            <a href="{{ route('product.edit', $item->id) }}"
                                                 class="text-decoration-none btn btn-outline-dark mb-3">Edit</a>
                                             <div class="dropdown">
                                                 <button class="btn btn-outline-dark dropdown-toggle" type="button"
