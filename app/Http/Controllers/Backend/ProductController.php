@@ -105,7 +105,7 @@ class ProductController extends Controller
         try {
             $validation = $request->validate([
                 'product_name' => [
-                    'sometimes', 'required', Rule::unique('products')->ignore($id), 'max:255', 'min:3',
+                    'sometimes', 'required', Rule::unique('products', 'product_name')->ignore($id), 'max:255', 'min:3',
                 ],
                 'description' => 'sometimes|required|max:255|min:3',
                 'price' => 'sometimes|required|min:3|max:10',

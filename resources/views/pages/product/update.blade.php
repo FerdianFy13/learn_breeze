@@ -96,9 +96,10 @@
                                         value="{{ old('image', $data->image) }}">
                                     <button type="button" onclick="changeImage()" class="btn btn-primary"
                                         id="changeImageButton">Change Image</button>
-                                    <div class="image-preview-container mt-3">
-                                        <button type="button" onclick="resetImage()" class="btn btn-secondary mb-2"
+                                    <div class="image-preview-container">
+                                        <button type="button" onclick="resetImage()" class="btn btn-secondary mb-2 mt-3"
                                             id="resetButton" style="display: none;">Reset</button>
+                                        <img class="img-preview img-fluid col-sm-7 mb-3" id="imagePreview">
                                         @if (Storage::exists($data->image))
                                             <img class="img-preview img-fluid col-sm-7 mb-3"
                                                 src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
