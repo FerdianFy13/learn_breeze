@@ -22,28 +22,22 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <a href="/product/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
+                        <a href="/category/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
                                 class="ti ti-plus me-1"></i>Add {{ $title }}</a>
 
-                        <table id="product" class="table" style="width:100%">
+                        <table id="category" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
                                     <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Category</th>
-                                    <th>Available</th>
-                                    <th>Stock</th>
-                                    <th>Weight</th>
-                                    <th>Country</th>
-                                    <th>Expiration</th>
+                                    <th>Description</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($data as $item)
+                            @foreach ($data as $item)
+                                <tbody>
                                     <tr>
                                         <td class="action-links">
-                                            <a href="{{ route('product.edit', $item->id) }}"
+                                            <a href="{{ route('category.edit', $item->id) }}"
                                                 class="text-decoration-none btn btn-outline-dark mb-3">Edit</a>
                                             <div class="dropdown">
                                                 <button class="btn btn-outline-dark dropdown-toggle" type="button"
@@ -53,11 +47,11 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('product.show', $item->id) }}"><i
+                                                            href="{{ route('category.show', $item->id) }}"><i
                                                                 class="ti ti-info-circle me-1 text-black"></i>Detail</a>
                                                     </li>
                                                     <form id="formDelete" method="post"
-                                                        action="{{ route('product.destroy', $item->id) }}">
+                                                        action="{{ route('category.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
                                                         <li><button class="dropdown-item deleteButton"><i
@@ -68,16 +62,12 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td>{{ Str::limit($item->product_name, 20) }}</td>
-                                        <td>{{ $item->price }}</td>
-                                        <td>{{ $item->category }}</td>
-                                        <td>{{ $item->available }}</td>
-                                        <td>{{ $item->stock }}</td>
-                                        <td>{{ $item->weight }}</td>
-                                        <td>{{ $item->origin_country }}</td>
-                                        <td>{{ $item->expiration_date }}</td>
+                                        <td>{{ Str::limit($item->name, 20) }}</td>
+                                        <td>{!! Str::limit($item->description, 20) !!}</td>
                                     </tr>
-                                @endforeach
+                                </tbody>
+                            @endforeach
+                            <tbody>
                             </tbody>
                         </table>
                     </div>

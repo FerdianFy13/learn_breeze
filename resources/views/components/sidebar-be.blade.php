@@ -35,6 +35,15 @@
                         <span class="hide-menu">Product</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ Request::is('category*') ? 'sidebar-link active' : '' }}" href="/category"
+                        aria-expanded="false">
+                        <span>
+                            <i class="ti ti-topology-star-3"></i>
+                        </span>
+                        <span class="hide-menu">Category</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
