@@ -1,5 +1,11 @@
 $(document).ready(function () {
-    $("#example").DataTable({
+    $("#product").DataTable({
+        scrollX: true,
+    });
+});
+
+$(document).ready(function () {
+    $("#category").DataTable({
         scrollX: true,
     });
 });
