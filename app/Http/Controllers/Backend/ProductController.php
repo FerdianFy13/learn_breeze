@@ -154,9 +154,15 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $query = Product::findOrFail($id)->delete();
+        $query = Product::findOrFail($id);
+        $oldImage = $query->image;
+        $query->delete();
 
         if ($query) {
+            if (!empty($oldImage) && Storage::disk('public')->exists($oldImage)) {
+                Storage::delete($oldImage);
+            }
+
             return response()->json(['success' => 'Product deleted successfully'], 200);
         } else {
             return response()->json(['error' => 'Product deleted failed'], 500);
