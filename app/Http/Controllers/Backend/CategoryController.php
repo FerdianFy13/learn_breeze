@@ -60,7 +60,10 @@ class CategoryController extends Controller
     {
         $category = CategoryProduct::findOrFail($id);
 
-        return view('pages.category.detail');
+        return view('pages.category.detail', [
+            'title' => 'Detaill Category',
+            'data' => $category,
+        ]);
     }
 
     /**

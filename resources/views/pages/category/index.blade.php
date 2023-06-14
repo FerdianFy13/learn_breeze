@@ -54,6 +54,7 @@
                                                         action="{{ route('category.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
+                                                        <input type="hidden" name="id" value="{{ $item->id }}">
                                                         <li><button class="dropdown-item deleteButton"><i
                                                                     class="ti ti-trash text-black me-1"
                                                                     onclick="confirm?"></i>Delete</button>
@@ -81,6 +82,9 @@
             $('.deleteButton').click(function(e) {
                 e.preventDefault();
 
+                var itemId = $(this).closest('form').find('input[name="id"]').val();
+                var form = $(this).closest('form');
+
                 Swal.fire({
                     icon: 'question',
                     title: 'Are you sure?',
@@ -94,9 +98,13 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: $('#formDelete').attr('action'),
+                            url: form.attr('action'),
                             type: 'POST',
-                            data: $('#formDelete').serialize(),
+                            data: {
+                                _token: $('meta[name="csrf-token"]').attr('content'),
+                                _method: 'DELETE',
+                                item_id: itemId
+                            },
                             success: function(response) {
                                 Swal.fire({
                                     title: 'Success',

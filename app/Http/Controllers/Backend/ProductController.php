@@ -146,7 +146,7 @@ class ProductController extends Controller
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
-        } 
+        }
     }
 
     /**
