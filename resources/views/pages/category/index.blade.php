@@ -33,8 +33,8 @@
                                     <th>Description</th>
                                 </tr>
                             </thead>
-                            @foreach ($data as $item)
-                                <tbody>
+                            <tbody>
+                                @foreach ($data as $item)
                                     <tr>
                                         <td class="action-links">
                                             <a href="{{ route('category.edit', $item->id) }}"
@@ -66,8 +66,8 @@
                                         <td>{{ Str::limit($item->name, 20) }}</td>
                                         <td>{!! Str::limit($item->description, 20) !!}</td>
                                     </tr>
-                                </tbody>
-                            @endforeach
+                                @endforeach
+                            </tbody>
                             <tbody>
                             </tbody>
                         </table>

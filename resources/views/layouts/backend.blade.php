@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
     {{-- end cdn --}}
 
 </head>
@@ -71,6 +72,9 @@
     <script src="{{ asset('dist/js/tables.js') }}"></script>
     <script src="{{ asset('dist/js/dataTables.min.js') }}"></script>
     <script src="{{ asset('dist/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('dist/js/select.js') }}"></script>
+
 </body>
 
 </html>

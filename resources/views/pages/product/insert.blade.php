@@ -38,8 +38,14 @@
                             <div class="mb-3 row">
                                 <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputCategory" required name="category"
-                                        value="{{ old('category') }}">
+                                    <div class="mt-1">
+                                        <select class="form-control" name="category_id" required>
+                                            <option selected>Please select category product</option>
+                                            @foreach ($data as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3 row">

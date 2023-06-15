@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\CategoryProduct;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         return view('pages.category.index', [
             'title' => 'Category',
-            'data' => CategoryProduct::all(),
+            'data' => Category::all(),
         ]);
     }
 
@@ -38,11 +38,11 @@ class CategoryController extends Controller
     {
         try {
             $validation = $request->validate([
-                'name' => 'required|unique:category_products|max:255|min:3',
+                'name' => 'required|unique:categories|max:255|min:3',
                 'description' => 'required|max:255|min:3',
             ]);
 
-            $category = CategoryProduct::create($validation);
+            $category = Category::create($validation);
 
             if ($category) {
                 return response()->json(['success' => 'Category created successfully'], 201);
@@ -59,7 +59,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = CategoryProduct::findOrFail($id);
+        $category = Category::findOrFail($id);
 
         return view('pages.category.detail', [
             'title' => 'Detaill Category',
@@ -72,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = CategoryProduct::findOrFail($id);
+        $category = Category::findOrFail($id);
 
         return view('pages.category.update', [
             'title' => 'Update Category',
@@ -88,12 +88,12 @@ class CategoryController extends Controller
         try {
             $validation = $request->validate([
                 'name' => [
-                    'sometimes', 'required', Rule::unique('category_products', 'name')->ignore($id), 'max:255', 'min:3',
+                    'sometimes', 'required', Rule::unique('categories', 'name')->ignore($id), 'max:255', 'min:3',
                 ],
                 'description' => 'sometimes|required|max:255|min:3',
             ]);
 
-            $category = CategoryProduct::findOrFail($id);
+            $category = Category::findOrFail($id);
             $category->update($validation);
 
             if ($category) {
@@ -111,7 +111,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $query = CategoryProduct::findOrFail($id)->delete();
+        $query = Category::findOrFail($id)->delete();
 
         if ($query) {
             return response()->json(['success' => 'Category deleted successfully'], 200);

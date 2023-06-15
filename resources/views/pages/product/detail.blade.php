@@ -28,15 +28,15 @@
                         <div class="mb-3 row">
                             <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputPrice" required name="price"
-                                    value="{{ old('price', $data->price) }}" readonly>
+                                <input type="text" class="form-control" id="inputPrice" required name="price"
+                                    value="{{ old('price', 'Rp' . number_format($data->price, 2, ',', '.')) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputCategory" required name="category"
-                                    value="{{ old('category', $data->category) }}" readonly>
+                                    value="{{ old('category', $data->category->name) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -50,14 +50,15 @@
                             <label for="inputStock" class="col-sm-2 col-form-label">Stock</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="inputStock" required name="stock"
-                                    value="{{ old('stock', $data->stock) }}" readonly>
+                                    value="{{ old('stock', number_format($data->stock, 0, ',', '.')) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="inputExpiration" class="col-sm-2 col-form-label">Expiration</label>
                             <div class="col-sm-10">
-                                <input type="date" class="form-control" id="inputExpiration" required
-                                    name="expiration_date" value="{{ old('expiration_date', $data->expiration_date) }}"
+                                <input type="text" class="form-control" id="inputExpiration" required
+                                    name="expiration_date"
+                                    value="{{ old('expiration_date', date('d F Y', strtotime($data->expiration_date))) }}"
                                     readonly>
                             </div>
                         </div>
@@ -65,7 +66,7 @@
                             <label for="inputWeight" class="col-sm-2 col-form-label">Weight</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="inputWeight" required name="weight"
-                                    value="{{ old('weight', $data->weight) }}" readonly>
+                                    value="{{ old('weight', number_format($data->weight, 0, ',', '.')) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">

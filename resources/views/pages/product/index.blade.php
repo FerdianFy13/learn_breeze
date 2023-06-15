@@ -70,13 +70,19 @@
                                             </div>
                                         </td>
                                         <td>{{ Str::limit($item->product_name, 20) }}</td>
-                                        <td>{{ $item->price }}</td>
-                                        <td>{{ $item->category }}</td>
+                                        <td>Rp{{ number_format($item->price, 2, ',', '.') }}</td>
+                                        <td>
+                                            @if ($item->category)
+                                                {{ $item->category->name }}
+                                            @else
+                                                Category name is null
+                                            @endif
+                                        </td>
                                         <td>{{ $item->available }}</td>
-                                        <td>{{ $item->stock }}</td>
-                                        <td>{{ $item->weight }}</td>
+                                        <td>{{ number_format($item->stock, 0, ',', '.') }}</td>
+                                        <td>{{ number_format($item->weight, 0, ',', '.') }}</td>
                                         <td>{{ $item->origin_country }}</td>
-                                        <td>{{ $item->expiration_date }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->expiration_date)->format('j F Y') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

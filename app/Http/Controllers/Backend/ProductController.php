@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,7 @@ class ProductController extends Controller
     {
         return view('pages.product.index', [
             'title' => 'Product',
-            'data' => Product::all(),
+            'data' => Product::with(['category'])->orderBy('product_name', 'ASC')->get(),
         ]);
     }
 
@@ -29,6 +30,7 @@ class ProductController extends Controller
     {
         return view('pages.product.insert', [
             'title' => 'Insert Product',
+            'data' => Category::all(),
         ]);
     }
 
@@ -42,7 +44,7 @@ class ProductController extends Controller
                 'product_name' => 'required|unique:products|max:255|min:3',
                 'description' => 'required|max:255|min:3',
                 'price' => 'required|min:3|max:10',
-                'category' => 'required',
+                'category_id' => 'required|exists:categories,id',
                 'available' => 'required',
                 'stock' => 'required|min:1|max:10',
                 'expiration_date' => 'required',
@@ -66,8 +68,6 @@ class ProductController extends Controller
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
@@ -93,7 +93,8 @@ class ProductController extends Controller
 
         return view('pages.product.update', [
             'title' => 'Update Product',
-            'data' => $query
+            'data' => $query,
+            'category' => Category::all()
         ]);
     }
 
@@ -109,7 +110,7 @@ class ProductController extends Controller
                 ],
                 'description' => 'sometimes|required|max:255|min:3',
                 'price' => 'sometimes|required|min:3|max:10',
-                'category' => 'sometimes|required',
+                'category_id' => 'sometimes|required|exists:categories,id',
                 'available' => 'sometimes|required',
                 'stock' => 'sometimes|required|min:1|max:10',
                 'expiration_date' => 'sometimes|required',
