@@ -40,8 +40,16 @@
                             <div class="mb-3 row">
                                 <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputCategory" required name="category"
-                                        value="{{ old('category', $data->category) }}">
+                                    <select class="form-select" name="category_id" required>
+                                        <option selected>Please select category product</option>
+                                        @foreach ($category as $item)
+                                            @if (old('category_id', $data->category_id) == $item->id)
+                                                <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -72,7 +80,8 @@
                                 <label for="inputExpiration" class="col-sm-2 col-form-label">Expiration</label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" id="inputExpiration" required
-                                        name="expiration_date" value="{{ old('expiration_date', $data->expiration_date) }}">
+                                        name="expiration_date"
+                                        value="{{ old('expiration_date', $data->expiration_date) }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
