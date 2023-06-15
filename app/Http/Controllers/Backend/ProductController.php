@@ -43,12 +43,18 @@ class ProductController extends Controller
             $validation = $request->validate([
                 'product_name' => 'required|unique:products|max:255|min:3',
                 'description' => 'required|max:255|min:3',
-                'price' => 'required|min:3|max:10',
+                'price' => [
+                    'required',
+                    'min:3',
+                    'max:10',
+                    'not_in:0',
+                    'regex:/^([1-9][0-9]*)$/'
+                ],
                 'category_id' => 'required|exists:categories,id',
                 'available' => 'required',
-                'stock' => 'required|min:1|max:10',
+                'stock' => 'required|min:1|max:10|not_in:0|regex:/^([1-9][0-9]*)$/',
                 'expiration_date' => 'required',
-                'weight' => 'required|min:1|max:10',
+                'weight' => 'required|min:1|max:10|not_in:0|regex:/^([1-9][0-9]*)$/',
                 'origin_country' => 'required|min:3|max:255',
                 'image' => 'required|image|file|max:4020',
             ]);
@@ -109,12 +115,12 @@ class ProductController extends Controller
                     'sometimes', 'required', Rule::unique('products', 'product_name')->ignore($id), 'max:255', 'min:3',
                 ],
                 'description' => 'sometimes|required|max:255|min:3',
-                'price' => 'sometimes|required|min:3|max:10',
+                'price' => 'sometimes|required|min:3|max:10|not_in:0|regex:/^([1-9][0-9]*)$/',
                 'category_id' => 'sometimes|required|exists:categories,id',
                 'available' => 'sometimes|required',
-                'stock' => 'sometimes|required|min:1|max:10',
+                'stock' => 'sometimes|required|min:1|max:10|not_in:0|regex:/^([1-9][0-9]*)$/',
                 'expiration_date' => 'sometimes|required',
-                'weight' => 'sometimes|required|min:1|max:10',
+                'weight' => 'sometimes|required|min:1|max:10|not_in:0|regex:/^([1-9][0-9]*)$/',
                 'origin_country' => 'sometimes|required|min:3|max:255',
                 'image' => 'sometimes|required|image|file|max:4020',
             ]);
