@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ Request::is('user*') ? 'sidebar-link active' : '' }}" href="/category"
+                    <a class="sidebar-link {{ Request::is('user*') ? 'sidebar-link active' : '' }}" href="/user"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-users"></i>

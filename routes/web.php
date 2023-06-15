@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\UserManagemenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/product', ProductController::class);
     Route::resource('/category', CategoryController::class);
+    Route::resource('/user', UserManagemenController::class);
 });
 
 require __DIR__ . '/auth.php';
