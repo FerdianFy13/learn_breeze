@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
 
 class UserManagemenController extends Controller
 {
@@ -38,9 +41,14 @@ class UserManagemenController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('pages.user_management.detail', [
+            'title' => 'Detail User Management',
+            'data' => $user
+        ]);
     }
 
     /**
@@ -48,15 +56,36 @@ class UserManagemenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('pages.user_management.update', [
+            'title' => 'Update User Management',
+            'data' => $user,
+            'roles' => Role::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'name' => 'required|exists:roles,id',
+            ]);
+
+            $role = Role::findById($id);
+
+            if ($role) {
+                $role->update($validation);
+                return response()->json(['success' => 'Role updated successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Role not found'], 404);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**

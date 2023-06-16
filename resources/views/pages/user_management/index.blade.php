@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="category" class="table" style="width:100%">
+                        <table id="usermanagement" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
@@ -35,7 +35,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="action-links">
-                                            <a href="{{ route('category.edit', $item->id) }}"
+                                            <a href="{{ route('user.edit', $item->id) }}"
                                                 class="text-decoration-none btn btn-outline-dark mb-3">Edit</a>
                                             <div class="dropdown">
                                                 <button class="btn btn-outline-dark dropdown-toggle" type="button"
@@ -45,11 +45,11 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('category.show', $item->id) }}"><i
+                                                            href="{{ route('user.show', $item->id) }}"><i
                                                                 class="ti ti-info-circle me-1 text-black"></i>Detail</a>
                                                     </li>
                                                     <form id="formDelete" method="post"
-                                                        action="{{ route('category.destroy', $item->id) }}">
+                                                        action="{{ route('user.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $item->id }}">
