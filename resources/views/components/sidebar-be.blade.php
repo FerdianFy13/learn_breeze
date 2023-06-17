@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/category"
+                    <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/role"
                         aria-expanded="false">
                         <span>
                             <i class="ti ti-wind"></i>
