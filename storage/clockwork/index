@@ -5,3 +5,8 @@
 1686902476-1217-2107239060,1686902475.925,GET,/product,"App\Http\Controllers\Backend\ProductController@index",200,425.42791366577,request
 1686902520-5425-775983562,1686902520.4047,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,312.26301193237,request
 1686903239-8359-1784516990,1686903239.5438,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,533.32304954529,request
+1686987008-0045-1198222033,1686987000.5239,GET,/,Closure,200,15435.692071915,request
+1686987019-4778-1904714269,1686987019.1365,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,1322.643995285,request
+1686987032-8942-221867135,1686987032.5223,POST,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@store",302,1644.6712017059,request
+1686987034-4405-696901354,1686987034.1769,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,744.04907226562,request
+1686987039-5742-728260823,1686987039.2722,GET,/category,"App\Http\Controllers\Backend\CategoryController@index",200,765.47694206238,request
