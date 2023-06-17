@@ -1,0 +1,7 @@
+1686901577-3954-946256382,1686901577.3094,GET,/user/1,"App\Http\Controllers\Backend\UserManagemenController@show",200,202.43191719055,request
+1686901589-3944-873330910,1686901589.3058,GET,/category,"App\Http\Controllers\Backend\CategoryController@index",200,186.85293197632,request
+1686901596-4613-584904919,1686901596.3867,GET,/product,"App\Http\Controllers\Backend\ProductController@index",200,154.82187271118,request
+1686901645-3613-1750201294,1686901645.267,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,203.65810394287,request
+1686902476-1217-2107239060,1686902475.925,GET,/product,"App\Http\Controllers\Backend\ProductController@index",200,425.42791366577,request
+1686902520-5425-775983562,1686902520.4047,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,312.26301193237,request
+1686903239-8359-1784516990,1686903239.5438,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,533.32304954529,request
