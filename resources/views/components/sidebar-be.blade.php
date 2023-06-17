@@ -44,6 +44,37 @@
                         <span class="hide-menu">Category</span>
                     </a>
                 </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Management</span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ Request::is('permission*') ? 'sidebar-link active' : '' }}"
+                        href="/category" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-shield-check"></i>
+                        </span>
+                        <span class="hide-menu">Permission</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/category"
+                        aria-expanded="false">
+                        <span>
+                            <i class="ti ti-wind"></i>
+                        </span>
+                        <span class="hide-menu">Role</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ Request::is('user*') ? 'sidebar-link active' : '' }}" href="/user"
+                        aria-expanded="false">
+                        <span>
+                            <i class="ti ti-users"></i>
+                        </span>
+                        <span class="hide-menu">User</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
