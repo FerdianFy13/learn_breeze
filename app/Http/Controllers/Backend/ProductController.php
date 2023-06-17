@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         return view('pages.product.index', [
             'title' => 'Product',
-            'data' => Product::with(['category'])->orderBy('product_name', 'ASC')->get(),
+            'data' => Product::with(['category'])->orderBy('product_name', 'asc')->get(),
         ]);
     }
 

@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         return view('pages.category.index', [
             'title' => 'Category',
-            'data' => Category::all(),
+            'data' => Category::orderBy('name', 'asc')->get(),
         ]);
     }
 
