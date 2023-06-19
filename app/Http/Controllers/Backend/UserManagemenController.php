@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
 
@@ -72,16 +72,19 @@ class UserManagemenController extends Controller
     {
         try {
             $validation = $request->validate([
-                'name' => 'required|exists:roles,id',
+                'name' => 'nullable',
+                'email' => 'nullable',
+                'password' => 'nullable',
+                'status_id' => 'sometimes|required|exists:statuses,id',
             ]);
 
-            $role = Role::findById($id);
+            $role = User::find($id);
+            $role->update($validation);
 
             if ($role) {
-                $role->update($validation);
-                return response()->json(['success' => 'Role updated successfully'], 201);
+                return response()->json(['success' => 'Status user updated successfully'], 200);
             } else {
-                return response()->json(['error' => 'Role not found'], 404);
+                return response()->json(['error' => 'Failed to update status user'], 500);
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
