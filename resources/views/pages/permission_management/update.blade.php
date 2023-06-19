@@ -12,7 +12,7 @@
                     </div>
                     <div>
                         <form id="formInsert" enctype="multipart/form-data" method="post"
-                            action="{{ route('category.update', $data->id) }}">
+                            action="{{ route('permission.update', $data->id) }}">
                             @method('patch')
                             @csrf
                             <div class="mb-3 row">
@@ -22,16 +22,8 @@
                                         value="{{ old('name', $data->name) }}">
                                 </div>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="hidden" name="description" id="inputDescription"
-                                        required value="{{ old('description', $data->description) }}">
-                                    <trix-editor input="inputDescription"></trix-editor>
-                                </div>
-                            </div>
                             <div class="float-end">
-                                <a href="/category" class="btn btn-outline-dark me-2">Cancel</a>
+                                <a href="/permission" class="btn btn-outline-dark me-2">Cancel</a>
                                 <button type="submit" class="btn btn-danger">Save changes</button>
                             </div>
                         </form>
@@ -88,7 +80,7 @@
                                 icon: 'success',
                                 confirmButtonColor: '#0F345E',
                             }).then((result) => {
-                                window.location.href = '/category';
+                                window.location.href = '/permission';
                             });
                         },
                         error: function(xhr) {

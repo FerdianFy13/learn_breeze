@@ -7,31 +7,21 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Update Table Product</h5>
+                            <h5 class="card-title fw-semibold">Insert Table Permission Management</h5>
                         </div>
                     </div>
                     <div>
-                        <form id="formInsert" enctype="multipart/form-data" method="post"
-                            action="{{ route('category.update', $data->id) }}">
-                            @method('patch')
+                        <form id="formInsert">
                             @csrf
                             <div class="mb-3 row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="inputName" required name="name"
-                                        value="{{ old('name', $data->name) }}">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="hidden" name="description" id="inputDescription"
-                                        required value="{{ old('description', $data->description) }}">
-                                    <trix-editor input="inputDescription"></trix-editor>
+                                        value="{{ old('name') }}">
                                 </div>
                             </div>
                             <div class="float-end">
-                                <a href="/category" class="btn btn-outline-dark me-2">Cancel</a>
+                                <a href="/permission" class="btn btn-outline-dark me-2">Cancel</a>
                                 <button type="submit" class="btn btn-danger">Save changes</button>
                             </div>
                         </form>
@@ -75,7 +65,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: $('#formInsert').attr('action'),
+                        url: '/permission',
                         type: 'POST',
                         data: formData,
                         dataType: 'json',
@@ -84,11 +74,11 @@
                         success: function(response) {
                             Swal.fire({
                                 title: 'Success',
-                                text: 'Update data successfully',
+                                text: 'Insert data successfully',
                                 icon: 'success',
                                 confirmButtonColor: '#0F345E',
                             }).then((result) => {
-                                window.location.href = '/category';
+                                window.location.href = '/permission';
                             });
                         },
                         error: function(xhr) {
@@ -109,7 +99,7 @@
                             } else {
                                 Swal.fire({
                                     title: 'Error',
-                                    text: 'Update data failed',
+                                    text: 'Insert data failed',
                                     icon: 'error',
                                     confirmButtonColor: '#0F345E',
                                 });

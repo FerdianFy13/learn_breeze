@@ -50,7 +50,7 @@
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link {{ Request::is('permission*') ? 'sidebar-link active' : '' }}"
-                        href="/category" aria-expanded="false">
+                        href="/permission" aria-expanded="false">
                         <span>
                             <i class="ti ti-shield-check"></i>
                         </span>
