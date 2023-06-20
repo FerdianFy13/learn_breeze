@@ -118,12 +118,21 @@
                                 });
                             },
                             error: function(xhr, status, error) {
-                                Swal.fire({
-                                    title: 'Error',
-                                    text: 'Delete data failed',
-                                    icon: 'error',
-                                    confirmButtonColor: '#0F345E',
-                                });
+                                if (xhr.status === 422) {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Cannot delete item. It is still used in other records.',
+                                        icon: 'error',
+                                        confirmButtonColor: '#0F345E',
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Delete data failed',
+                                        icon: 'error',
+                                        confirmButtonColor: '#0F345E',
+                                    });
+                                }
                             }
                         });
                     }
