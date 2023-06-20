@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -111,7 +112,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $query = Category::findOrFail($id)->delete();
+        $category = Category::findOrFail($id);
+
+        $productsCount = Product::where('category_id', $category->id)->count();
+        if ($productsCount > 0) {
+            return response()->json(['error' => 'Cannot delete category, it is still used in products'], 422);
+        }
+
+        $query = $category->delete();
 
         if ($query) {
             return response()->json(['success' => 'Category deleted successfully'], 200);
