@@ -98,6 +98,13 @@
                                     icon: 'error',
                                     confirmButtonColor: '#0F345E',
                                 });
+                            } else if (xhr.status === 419) {
+                                Swal.fire({
+                                    title: 'Error',
+                                    text: 'Cannot update role, it is still used in model_has_roles',
+                                    icon: 'error',
+                                    confirmButtonColor: '#0F345E',
+                                });
                             } else {
                                 Swal.fire({
                                     title: 'Error',

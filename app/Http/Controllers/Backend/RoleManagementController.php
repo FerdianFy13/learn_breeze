@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Permission;
@@ -96,6 +97,15 @@ class RoleManagementController extends Controller
             ]);
 
             $role = Role::findOrFail($id);
+
+            $modelHasPermissionsCount = DB::table('model_has_roles')
+                ->where('role_id', $role->id)
+                ->count();
+
+            if ($modelHasPermissionsCount > 0) {
+                return response()->json(['error' => 'Cannot update role, it is still used in model_has_roles'], 419);
+            }
+
             $role->update($validation);
 
             if ($role) {
@@ -113,6 +123,22 @@ class RoleManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        $modelHasPermissionsCount = DB::table('model_has_roles')
+            ->where('role_id', $role->id)
+            ->count();
+
+        if ($modelHasPermissionsCount > 0) {
+            return response()->json(['error' => 'Cannot update role, it is still used in model_has_roles'], 422);
+        }
+
+        $query = $role->delete();
+
+        if ($query) {
+            return response()->json(['success' => 'Role deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Role deleted failed'], 500);
+        }
     }
 }

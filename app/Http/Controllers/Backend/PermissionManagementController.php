@@ -119,7 +119,6 @@ class PermissionManagementController extends Controller
      */
     public function destroy($id)
     {
-
         $permission = Permission::findOrFail($id);
 
         $modelHasPermissionsCount = DB::table('model_has_permissions')
