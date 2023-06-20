@@ -95,4 +95,68 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.deleteButton').click(function(e) {
+                e.preventDefault();
+
+                var itemId = $(this).closest('form').find('input[name="id"]').val();
+                var form = $(this).closest('form');
+
+                Swal.fire({
+                    icon: 'question',
+                    title: 'Are you sure?',
+                    text: "you want to delete this item!",
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete!',
+                    cancelButtonText: 'Cancel',
+                    confirmButtonColor: '#0F345E',
+                    cancelButtonColor: '#BB1F26',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: form.attr('action'),
+                            type: 'POST',
+                            data: {
+                                _token: $('meta[name="csrf-token"]').attr('content'),
+                                _method: 'DELETE',
+                                item_id: itemId
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: 'Success',
+                                    text: 'Delete data successfully',
+                                    icon: 'success',
+                                    confirmButtonColor: '#0F345E',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(xhr, status, error) {
+                                if (xhr.status === 422) {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Cannot delete item. It is still used in other records.',
+                                        icon: 'error',
+                                        confirmButtonColor: '#0F345E',
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Delete data failed',
+                                        icon: 'error',
+                                        confirmButtonColor: '#0F345E',
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
