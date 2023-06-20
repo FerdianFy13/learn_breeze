@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Permission;
@@ -92,6 +93,14 @@ class PermissionManagementController extends Controller
             ]);
 
             $permission = Permission::findOrFail($id);
+
+            $modelHasPermissionsCount = DB::table('model_has_permissions')
+                ->where('permission_id', $permission->id)
+                ->count();
+
+            if ($modelHasPermissionsCount > 0) {
+                return response()->json(['error' => 'Cannot update permission, it is still used in model_has_permissions'], 419);
+            }
             $permission->update($validation);
 
             if ($permission) {
