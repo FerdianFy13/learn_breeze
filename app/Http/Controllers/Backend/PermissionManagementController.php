@@ -101,6 +101,7 @@ class PermissionManagementController extends Controller
             if ($modelHasPermissionsCount > 0) {
                 return response()->json(['error' => 'Cannot update permission, it is still used in model_has_permissions'], 419);
             }
+
             $permission->update($validation);
 
             if ($permission) {
@@ -119,7 +120,17 @@ class PermissionManagementController extends Controller
     public function destroy($id)
     {
 
-        $query = Permission::findOrFail($id)->delete();
+        $permission = Permission::findOrFail($id);
+
+        $modelHasPermissionsCount = DB::table('model_has_permissions')
+            ->where('permission_id', $permission->id)
+            ->count();
+
+        if ($modelHasPermissionsCount > 0) {
+            return response()->json(['error' => 'Cannot delete permission, it is still used in model_has_permissions'], 422);
+        }
+
+        $query = $permission->delete();
 
         if ($query) {
             return response()->json(['success' => 'Permission deleted successfully'], 200);
