@@ -91,13 +91,13 @@ class PermissionManagementController extends Controller
                 ],
             ]);
 
-            $category = Permission::findOrFail($id);
-            $category->update($validation);
+            $permission = Permission::findOrFail($id);
+            $permission->update($validation);
 
-            if ($category) {
-                return response()->json(['success' => 'Category updated successfully'], 201);
+            if ($permission) {
+                return response()->json(['success' => 'Permission updated successfully'], 201);
             } else {
-                return response()->json(['error' => 'Failed to updated category'], 500);
+                return response()->json(['error' => 'Failed to updated Permission'], 500);
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);

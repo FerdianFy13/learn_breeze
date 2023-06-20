@@ -22,12 +22,15 @@
                         </div>
                     </div>
                     <div class="table-responsive">
+                        <a href="/role/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
+                                class="ti ti-plus me-1"></i>Add {{ $title }}</a>
+
                         <table id="usermanagement" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
                                     <th>Role Name</th>
-                                    <th>Permission</th>
+                                    <th>Guard</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,7 +49,7 @@
                                                                 class="ti ti-tools me-1 text-black"></i>Edit Permission</a>
                                                     </li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
+                                                            href="{{ route('role.edit', $item->id) }}"><i
                                                                 class="ti ti-edit me-1 text-black"></i>Edit Role</a>
                                                     </li>
                                                     <li><a class="dropdown-item"
@@ -63,11 +66,11 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
+                                                            href="{{ route('role.show', $item->id) }}"><i
                                                                 class="ti ti-info-circle me-1 text-black"></i>Detail</a>
                                                     </li>
                                                     <form id="formDelete" method="post"
-                                                        action="{{ route('user.destroy', $item->id) }}">
+                                                        action="{{ route('role.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $item->id }}">
@@ -80,7 +83,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->guard_name }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
