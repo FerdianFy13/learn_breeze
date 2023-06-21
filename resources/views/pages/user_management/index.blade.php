@@ -16,6 +16,16 @@
         <div class="col-lg-12 d-flex align-items-strech">
             <div class="card w-100">
                 <div class="card-body">
+                    @if (session()->has('success'))
+                        <div class="alert alert-success text-dark alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {{-- <div class="alert alert-success text-dark" role="alert">
+                            {{ session('success') }}
+                        </div> --}}
+                    @endif
+
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
                             <h5 class="card-title fw-semibold">Table {{ $title }}</h5>

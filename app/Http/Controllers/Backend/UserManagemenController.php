@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Status;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
@@ -119,15 +121,12 @@ class UserManagemenController extends Controller
             $user = User::findOrFail($id);
             $roleName = $request->input('role');
             $role = Role::where('name', $roleName)->first();
-            $data = $user->syncRole([$role]);
-
-            if ($data) {
-                return response()->json(['success' => 'Role user updated successfully'], 200);
-            } else {
-                return response()->json(['error' => 'Failed to update rolle user'], 500);
-            }
-        } catch (ValidationException $e) {
-            return response()->json(['errors' => $e->errors()], 422);
+            $user->syncRoles([$role]);
+            return redirect()->route('user.index')->with('success', 'User role updated successfully');
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('error', 'User not found');
+        } catch (QueryException $e) {
+            return redirect()->back()->with('error', 'Database error');
         }
     }
 }
