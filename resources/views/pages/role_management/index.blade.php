@@ -53,7 +53,7 @@
                                                                 class="ti ti-edit me-1 text-black"></i>Edit Role</a>
                                                     </li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
+                                                            href="{{ route('role.edituser', $item->id) }}"><i
                                                                 class="ti ti-pencil me-1 text-black"></i>Edit User</a>
                                                     </li>
                                                 </ul>
