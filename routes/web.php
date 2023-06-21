@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/product', ProductController::class);
     Route::resource('/category', CategoryController::class);
-    Route::resource('/permission', PermissionManagementController::class);
+    // Route::resource('/permission', PermissionManagementController::class);
     Route::resource('/role', RoleManagementController::class);
     Route::resource('/user', UserManagemenController::class);
     Route::get('/user/{id}/edituser', [UserManagemenController::class, 'edituser'])->name('user.edituser');

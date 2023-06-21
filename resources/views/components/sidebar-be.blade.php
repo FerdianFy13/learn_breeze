@@ -48,7 +48,7 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Management</span>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a class="sidebar-link {{ Request::is('permission*') ? 'sidebar-link active' : '' }}"
                         href="/permission" aria-expanded="false">
                         <span>
@@ -56,7 +56,7 @@
                         </span>
                         <span class="hide-menu">Permission</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/role"
                         aria-expanded="false">
