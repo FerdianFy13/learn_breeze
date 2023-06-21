@@ -57,11 +57,12 @@ class UserManagemenController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
+        $role = Role::all();
 
         return view('pages.user_management.update', [
             'title' => 'Update User Management',
             'data' => $user,
-            'roles' => Role::all(),
+            'role' => $role,
         ]);
     }
 
@@ -97,5 +98,36 @@ class UserManagemenController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function edituser(string $id)
+    {
+        $user = User::findOrFail($id);
+        $role = Role::all();
+
+        return view('pages.user_management.update_user', [
+            'title' => 'Update Role User Management',
+            'data' => $user,
+            'role' => $role,
+        ]);
+    }
+
+
+    public function updateuser(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $roleName = $request->input('role');
+            $role = Role::where('name', $roleName)->first();
+            $data = $user->syncRole([$role]);
+
+            if ($data) {
+                return response()->json(['success' => 'Role user updated successfully'], 200);
+            } else {
+                return response()->json(['error' => 'Failed to update rolle user'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 }

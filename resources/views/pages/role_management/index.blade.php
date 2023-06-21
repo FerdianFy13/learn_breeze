@@ -25,7 +25,7 @@
                         <a href="/role/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
                                 class="ti ti-plus me-1"></i>Add {{ $title }}</a>
 
-                        <table id="usermanagement" class="table" style="width:100%">
+                        <table id="product" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
@@ -45,16 +45,8 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
-                                                                class="ti ti-tools me-1 text-black"></i>Edit Permission</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
                                                             href="{{ route('role.edit', $item->id) }}"><i
                                                                 class="ti ti-edit me-1 text-black"></i>Edit Role</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('role.edituser', $item->id) }}"><i
-                                                                class="ti ti-pencil me-1 text-black"></i>Edit User</a>
                                                     </li>
                                                 </ul>
                                             </div>

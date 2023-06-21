@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="usermanagement" class="table" style="width:100%">
+                        <table id="product" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
@@ -40,7 +40,8 @@
                                         </td>
                                         <td>{{ Str::limit($item->name, 20) }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->getRoleNames()->implode(', ') }}</td>
+                                        <td> <a href="{{ route('user.edituser', $item->id) }}"
+                                                class="btn btn-danger">{{ $item->getRoleNames()->implode(', ') }}</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

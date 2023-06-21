@@ -30,8 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/permission', PermissionManagementController::class);
     Route::resource('/role', RoleManagementController::class);
     Route::resource('/user', UserManagemenController::class);
-    Route::get('/role/{id}/edituser', [RoleManagementController::class, 'edituser'])->name('role.edituser');
-    Route::put('/role/{id}/edituser', [RoleManagementController::class, 'updateuser'])->name('role.updateuser');
+    Route::get('/user/{id}/edituser', [UserManagemenController::class, 'edituser'])->name('user.edituser');
+    Route::put('/user/{id}/edituser', [UserManagemenController::class, 'updateuser'])->name('user.updateuser');
 });
 
 require __DIR__ . '/auth.php';
