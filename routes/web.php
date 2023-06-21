@@ -27,5 +27,11 @@ Route::group(['middleware' => ['role:Administrator|Contributor|Member|Super Admi
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
+Route::group(['middleware' => ['role:Administrator|Super Administrator']], function () {
+    Route::resource('/user', UserManagemenController::class);
+    Route::get('/user/{id}/edituser', [UserManagemenController::class, 'edituser'])->name('user.edituser');
+    Route::put('/user/{id}/edituser', [UserManagemenController::class, 'updateuser'])->name('user.updateuser');
+});
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/super_admin.php';
