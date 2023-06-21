@@ -19,6 +19,6 @@ class UserSeeder extends Seeder
             'password' => '12345678'
         ]);
 
-        $user->assignRole('Administrator');
+        $user->assignRole('Super Administrator');
     }
 }

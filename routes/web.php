@@ -23,15 +23,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
+Route::group(['middleware' => ['role:Administrator|Contributor|Member|Super Administrator|Partner|Agency']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::resource('/product', ProductController::class);
-    Route::resource('/category', CategoryController::class);
-    // Route::resource('/permission', PermissionManagementController::class);
-    Route::resource('/role', RoleManagementController::class);
+});
+
+Route::group(['middleware' => ['role:Administrator|Super Administrator']], function () {
     Route::resource('/user', UserManagemenController::class);
     Route::get('/user/{id}/edituser', [UserManagemenController::class, 'edituser'])->name('user.edituser');
     Route::put('/user/{id}/edituser', [UserManagemenController::class, 'updateuser'])->name('user.updateuser');
 });
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/super_admin.php';
