@@ -16,13 +16,23 @@
         <div class="col-lg-12 d-flex align-items-strech">
             <div class="card w-100">
                 <div class="card-body">
+                    @if (session()->has('success'))
+                        <div class="alert alert-success text-dark alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {{-- <div class="alert alert-success text-dark" role="alert">
+                            {{ session('success') }}
+                        </div> --}}
+                    @endif
+
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
                             <h5 class="card-title fw-semibold">Table {{ $title }}</h5>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="usermanagement" class="table" style="width:100%">
+                        <table id="product" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
@@ -40,7 +50,8 @@
                                         </td>
                                         <td>{{ Str::limit($item->name, 20) }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->getRoleNames()->implode(', ') }}</td>
+                                        <td> <a href="{{ route('user.edituser', $item->id) }}"
+                                                class="btn btn-danger">{{ $item->getRoleNames()->implode(', ') }}</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

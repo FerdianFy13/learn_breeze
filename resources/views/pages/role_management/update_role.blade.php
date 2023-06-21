@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Update Table Product</h5>
+                            <h5 class="card-title fw-semibold">Update Table Role Management || {{ $data->name }}</h5>
                         </div>
                     </div>
                     <div>
@@ -16,10 +16,9 @@
                             @method('patch')
                             @csrf
                             <div class="mb-3 row">
-                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                <label for="inputName" class="col-sm-2 col-form-label">User Role</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName" required name="name"
-                                        value="{{ old('name', $data->name) }}">
+                             
                                 </div>
                             </div>
                             <div class="float-end">

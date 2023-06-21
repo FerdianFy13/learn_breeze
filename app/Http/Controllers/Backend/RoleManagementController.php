@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -77,7 +78,6 @@ class RoleManagementController extends Controller
     {
         $role = Role::findOrFail($id);
 
-
         return view('pages.role_management.update_role', [
             'title' => 'Update Role Management',
             'data' => $role,
@@ -140,5 +140,24 @@ class RoleManagementController extends Controller
         } else {
             return response()->json(['error' => 'Role deleted failed'], 500);
         }
+    }
+    public function edituser(string $id)
+    {
+        $role = Role::findOrFail($id);
+
+        $users = User::whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role->name);
+        })->get();
+
+        return view('pages.role_management.update_user', [
+            'title' => 'Update Role User Management',
+            'data' => $role,
+            'user' => $users,
+        ]);
+    }
+
+
+    public function updateuser()
+    {
     }
 }
