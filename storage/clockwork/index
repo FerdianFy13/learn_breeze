@@ -1089,3 +1089,12 @@
 1687406555-5306-451312055,1687406555.2798,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,579.25391197205,request
 1687406599-8302-139746252,1687406599.4897,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,693.14908981323,request
 1687406702-6663-470934762,1687406702.3881,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,582.49497413635,request
+1687406847-2611-1163128898,1687406846.9524,GET,/user,"App\Http\Controllers\Backend\UserManagemenController@index",200,721.82893753052,request
+1687406898-8002-1940172528,1687406898.5121,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,528.59401702881,request
+1687407426-0685-449894100,1687407425.7904,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,846.13013267517,request
+1687407436-8407-1889293079,1687407436.5258,DELETE,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@destroy",422,569.69213485718,request
+1687407501-1204-779835523,1687407500.7847,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,773.31709861755,request
+1687407508-7772-330179512,1687407508.4792,DELETE,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@destroy",422,507.30395317078,request
+1687407534-4931-1307305174,1687407534.1615,DELETE,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@destroy",422,537.4128818512,request
+1687407541-8337-990621884,1687407541.5894,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,589.05386924744,request
+1687407548-8267-217385220,1687407548.5101,DELETE,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@destroy",422,576.83610916138,request

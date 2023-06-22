@@ -97,6 +97,18 @@ class PartnerManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Partner::findOrFail($id);
+
+        if ($data->available == "Enabled") {
+            return response()->json(['error' => 'Partner cannot be deleted because it is currently enabled'], 422);
+        }
+
+        $query = $data->delete();
+
+        if ($query) {
+            return response()->json(['success' => 'Partner deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Partner deleted failed'], 500);
+        }
     }
 }
