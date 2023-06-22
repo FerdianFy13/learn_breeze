@@ -1136,3 +1136,17 @@
 1687418612-3749-1748510852,1687418612.2864,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,197.60298728943,request
 1687418623-7062-969703945,1687418623.6179,PATCH,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@update",201,215.18301963806,request
 1687418627-0248-1326359052,1687418626.9477,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,184.15403366089,request
+1687418841-6793-299858539,1687418841.576,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,250.40411949158,request
+1687418845-0453-518867977,1687418844.9669,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,275.63500404358,request
+1687418854-6376-965057710,1687418854.5143,PATCH,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@update",422,258.2528591156,request
+1687418913-7950-428139454,1687418913.7137,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,215.53015708923,request
+1687418918-1673-1875067352,1687418918.084,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,204.745054245,request
+1687418923-9455-1594757380,1687418923.8597,PATCH,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@update",201,199.56493377686,request
+1687418927-1651-1779207488,1687418927.081,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,192.23403930664,request
+1687419034-1240-1618834028,1687419034.0242,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,382.71999359131,request
+1687419038-7527-1973677962,1687419038.676,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,182.49917030334,request
+1687419191-5772-1741697827,1687419191.4815,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,309.42487716675,request
+1687419267-4698-206809261,1687419267.3666,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,383.07309150696,request
+1687419297-9568-1957777934,1687419297.8778,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,260.22100448608,request
+1687419305-0974-2014922129,1687419304.9983,PATCH,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@update",422,205.49201965332,request
+1687419309-5823-1338831809,1687419309.5047,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,185.60910224915,request
