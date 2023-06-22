@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Partner;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class PartnerManagementController extends Controller
@@ -71,7 +72,7 @@ class PartnerManagementController extends Controller
         $data = Partner::findOrFail($id);
 
         return view('pages.partner_management.detail', [
-            'title' => 'Detaill Partner Management',
+            'title' => 'Detail Partner Management',
             'data' => $data,
         ]);
     }
@@ -81,7 +82,13 @@ class PartnerManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Partner::findOrFail($id);
+
+        return view('pages.partner_management.update', [
+            'title' => 'Update Partner Management',
+            'data' => $data,
+            'user' => User::all()
+        ]);
     }
 
     /**
@@ -89,7 +96,35 @@ class PartnerManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'person_responsible' => [
+                    'sometimes', 'required', Rule::unique('partners', 'person_responsible')->ignore($id), 'max:255', 'min:3',
+                ],
+                'address' => 'sometimes|required|max:255|min:3',
+                'available' => 'required',
+                'phone_number' => [
+                    'required',
+                    'min:11',
+                    'max:13',
+                ],
+                'user_id' => [
+                    'sometimes', 'required', Rule::unique('partners', 'user_id')->ignore($id), 'exists:users,id',
+                ],
+                'business_type' => 'sometimes|required|max:255|min:3',
+            ]);
+
+            $partner = Partner::findOrFail($id);
+            $partner->update($validation);
+
+            if ($partner) {
+                return response()->json(['success' => 'Partner updated successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to updated partner'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
