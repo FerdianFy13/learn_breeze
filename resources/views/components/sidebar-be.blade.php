@@ -24,7 +24,7 @@
                         </a>
                     </li>
                 @endrole
-                <li class="nav-small-cap">
+                {{-- <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Post</span>
                 </li>
@@ -45,7 +45,7 @@
                         </span>
                         <span class="hide-menu">Category</span>
                     </a>
-                </li>
+                </li> --}}
                 @role('Administrator|Super Administrator')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>

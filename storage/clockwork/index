@@ -817,3 +817,7 @@
 1687335195-0110-730599260,1687335194.8915,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,226.16481781006,request
 1687335199-7649-425600251,1687335199.6301,GET,/,Closure,200,285.43996810913,request
 1687335202-7279-1503715052,1687335202.5986,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",403,240.40794372559,request
+1687335538-1728-526935549,1687335538.0399,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,304.14009094238,request
+1687335547-3641-979448711,1687335547.1901,GET,/role,"App\Http\Controllers\Backend\RoleManagementController@index",403,341.59398078918,request
+1687335590-1359-649963218,1687335589.993,GET,/logout,"App\Http\Controllers\Auth\AuthenticatedSessionController@destroy",302,255.73897361755,request
+1687335590-4343-10056666,1687335590.2966,GET,/,Closure,200,241.40095710754,request
