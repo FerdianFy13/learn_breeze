@@ -7,6 +7,7 @@ use App\Models\Logo;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class LogoManagementController extends Controller
@@ -81,7 +82,13 @@ class LogoManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Logo::findOrFail($id);
+
+        return view('pages.logo_management.update', [
+            'title' => 'Update Logo Management',
+            'data' => $data,
+            'query' => Partner::all(),
+        ]);
     }
 
     /**
@@ -89,7 +96,46 @@ class LogoManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'name' => [
+                    'sometimes', 'required', Rule::unique('logos', 'name')->ignore($id), 'max:255', 'min:3',
+                ],
+                'partner_id' => [
+                    'sometimes', 'required', Rule::unique('logos', 'partner_id')->ignore($id), 'exists:partners,id',
+                ],
+                'image' => 'sometimes|required|image|file|max:4020',
+            ]);
+
+            $logo = Logo::findOrFail($id);
+            $oldImage = $logo->image;
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('logo_images');
+            }
+
+            $logo->update($validation);
+
+            if ($request->file('image') && $oldImage) {
+                Storage::delete($oldImage); // Hapus file gambar lama
+            }
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('logo_images');
+            }
+
+            if ($logo) {
+                return response()->json(['success' => 'Product update successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to update product'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
