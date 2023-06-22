@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('address');
             $table->bigInteger('phone_number');
             $table->string('business_type');
+            $table->enum('available', ['Enabled', 'Disabled']);
             $table->timestamps();
         });
     }

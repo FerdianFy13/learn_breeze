@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class PartnerManagementController extends Controller
 {
@@ -12,7 +15,10 @@ class PartnerManagementController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.partner_management.index', [
+            'title' => 'Partner Management',
+            'data' => Partner::with('user')->get(),
+        ]);
     }
 
     /**
@@ -20,7 +26,10 @@ class PartnerManagementController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.partner_management.insert', [
+            'title' => 'Partner Management',
+            'data' => User::all(),
+        ]);
     }
 
     /**
@@ -28,7 +37,30 @@ class PartnerManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'person_responsible' => 'required|unique:partners|max:255|min:3',
+                'address' => 'required|max:255|min:3',
+                'available' => 'required',
+                'phone_number' => [
+                    'required',
+                    'min:11',
+                    'max:13',
+                ],
+                'user_id' => 'required|exists:users,id|unique:partners',
+                'business_type' => 'required|max:255|min:3',
+            ]);
+
+            $partner = Partner::create($validation);
+
+            if ($partner) {
+                return response()->json(['success' => 'Partner created successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to create partner'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**

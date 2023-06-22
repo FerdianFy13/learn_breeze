@@ -17,10 +17,13 @@ class RoleSeeder extends Seeder
             'name' => 'Administrator',
         ]);
         Role::create([
-            'name' => 'Contributor',
+            'name' => 'Agency',
         ]);
         Role::create([
             'name' => 'Member',
+        ]);
+        Role::create([
+            'name' => 'Partner',
         ]);
         Role::create([
             'name' => 'Super Administrator',
