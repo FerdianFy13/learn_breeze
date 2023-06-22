@@ -20,7 +20,7 @@ class UserManagemenController extends Controller
     {
         return view('pages.user_management.index', [
             'title' => 'User Management',
-            'data' => User::with('role')->get()
+            'data' => User::with('role')->get(),
         ]);
     }
 

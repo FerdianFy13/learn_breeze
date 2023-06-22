@@ -19,14 +19,31 @@
                             <div class="mb-3 row">
                                 <label for="inputRole" class="col-sm-2 col-form-label">Role</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" data-live-search="true" name="role">
-                                        @foreach ($role as $role)
-                                            <option data-tokens="{{ $role->name }}" value="{{ $role->name }}"
-                                                @if ($data->hasRole($role->name)) selected @endif>
-                                                {{ $role->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    @role('Super Administrator')
+                                        <select class="form-select" data-live-search="true" name="role">
+                                            @foreach ($role as $role)
+                                                <option data-tokens="{{ $role->name }}" value="{{ $role->name }}"
+                                                    @if ($data->hasRole($role->name)) selected @endif>
+                                                    {{ $role->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    @endrole
+                                    @role('Administrator')
+                                        <select class="form-select" data-live-search="true" name="role">
+                                            @foreach ($role as $role)
+                                                @role('Administrator')
+                                                    @if ($role->name === 'Super Administrator')
+                                                        @continue
+                                                    @endif
+                                                @endrole
+                                                <option data-tokens="{{ $role->name }}" value="{{ $role->name }}"
+                                                    @if ($data->hasRole($role->name)) selected @endif>
+                                                    {{ $role->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    @endrole
                                 </div>
                             </div>
                             <div class="float-end">
