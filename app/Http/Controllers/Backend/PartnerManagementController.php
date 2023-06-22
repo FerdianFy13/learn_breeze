@@ -27,7 +27,7 @@ class PartnerManagementController extends Controller
     public function create()
     {
         return view('pages.partner_management.insert', [
-            'title' => 'Partner Management',
+            'title' => 'Insert Partner Management',
             'data' => User::all(),
         ]);
     }
@@ -68,7 +68,12 @@ class PartnerManagementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Partner::findOrFail($id);
+
+        return view('pages.partner_management.detail', [
+            'title' => 'Detaill Partner Management',
+            'data' => $data,
+        ]);
     }
 
     /**

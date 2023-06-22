@@ -34,6 +34,7 @@
                                     <th>Address</th>
                                     <th>Phone Number</th>
                                     <th>Business Type</th>
+                                    <th>Available</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,6 +72,7 @@
                                         <td>{!! Str::limit(strip_tags($item->address), 20) !!}</td>
                                         <td>{{ $item->phone_number }}</td>
                                         <td>{{ Str::limit($item->business_type, 20) }}</td>
+                                        <td>{{ $item->available }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
