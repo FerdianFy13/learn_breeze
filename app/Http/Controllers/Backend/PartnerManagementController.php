@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Logo;
 use App\Models\Partner;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -137,9 +138,12 @@ class PartnerManagementController extends Controller
     public function destroy(string $id)
     {
         $data = Partner::findOrFail($id);
+        $logoCount = Logo::where('partner_id', $data->id)->count();
 
         if ($data->available == "Enabled") {
             return response()->json(['error' => 'Partner cannot be deleted because it is currently enabled'], 422);
+        } else if ($logoCount > 0) {
+            return response()->json(['error' => 'Cannot delete partner, it is still used in logo'], 419);
         }
 
         $query = $data->delete();
