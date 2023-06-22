@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Insert Table Partner Management</h5>
+                            <h5 class="card-title fw-semibold">Detail Table Partner Management</h5>
                             <a href="/partner" class="btn btn-outline-dark me-2 mt-3">Back</a>
                         </div>
                     </div>
