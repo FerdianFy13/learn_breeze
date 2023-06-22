@@ -1,7 +1,7 @@
 <aside class="left-sidebar">
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
+            <a href="/dashboard" class="text-nowrap logo-img">
                 <img src="{{ asset('dist/images/logos/dark-logo.svg') }}" width="180" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -80,6 +80,26 @@
                                 <i class="ti ti-users"></i>
                             </span>
                             <span class="hide-menu">User</span>
+                        </a>
+                    </li>
+                @endrole
+                @role('Administrator')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('partner*') ? 'sidebar-link active' : '' }}" href="/partner"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-brand-docker"></i>
+                            </span>
+                            <span class="hide-menu">Partner</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('logo*') ? 'sidebar-link active' : '' }}" href="/logo"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-photo"></i>
+                            </span>
+                            <span class="hide-menu">Logo</span>
                         </a>
                     </li>
                 @endrole

@@ -42,20 +42,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <td class="action-links">
-                                            <a href="{{ route('user.show', $item->id) }}"
-                                                class="text-decoration-none btn btn-outline-dark mb-3">Detail</a>
-                                        </td>
-                                        <td>{{ Str::limit($item->name, 20) }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td> <a href="{{ route('user.edituser', $item->id) }}"
-                                                class="btn btn-danger">{{ $item->getRoleNames()->implode(', ') }}</a></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                            <tbody>
+                                @role('Super Administrator')
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td class="action-links">
+                                                <a href="{{ route('user.show', $item->id) }}"
+                                                    class="text-decoration-none btn btn-outline-dark mb-3">Detail</a>
+                                            </td>
+                                            <td>{{ Str::limit($item->name, 20) }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>
+                                                <a href="{{ route('user.edituser', $item->id) }}"
+                                                    class="btn btn-danger">{{ $item->getRoleNames()->implode(', ') }}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endrole
+                                @role('Administrator')
+                                    @foreach ($data as $item)
+                                        @unless ($item->hasRole('Super Administrator'))
+                                            <tr>
+                                                <td class="action-links">
+                                                    <a href="{{ route('user.show', $item->id) }}"
+                                                        class="text-decoration-none btn btn-outline-dark mb-3">Detail</a>
+                                                </td>
+                                                <td>{{ Str::limit($item->name, 20) }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td>
+                                                    <a href="{{ route('user.edituser', $item->id) }}"
+                                                        class="btn btn-danger">{{ $item->getRoleNames()->implode(', ') }}</a>
+                                                </td>
+                                            </tr>
+                                        @endunless
+                                    @endforeach
+                                @endrole
                             </tbody>
                         </table>
                     </div>
