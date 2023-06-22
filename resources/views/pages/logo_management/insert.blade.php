@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="float-end">
-                                <a href="/product" class="btn btn-outline-dark me-2">Cancel</a>
+                                <a href="/logo" class="btn btn-outline-dark me-2">Cancel</a>
                                 <button type="submit" class="btn btn-danger">Save changes</button>
                             </div>
                         </form>

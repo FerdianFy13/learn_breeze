@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Logo;
 use App\Models\Partner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class LogoManagementController extends Controller
@@ -40,7 +41,7 @@ class LogoManagementController extends Controller
         try {
             $validation = $request->validate([
                 'name' => 'required|unique:logos|max:255|min:3',
-                'partner_id' => 'required|exists:partners,id',
+                'partner_id' => 'required|exists:partners,id|unique:logos',
                 'image' => 'required|image|file|max:2020',
             ]);
 
@@ -67,7 +68,12 @@ class LogoManagementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Logo::findOrFail($id);
+
+        return view('pages.logo_management.detail', [
+            'title' => 'Detail Logo Management',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -91,6 +97,18 @@ class LogoManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $query = Logo::findOrFail($id);
+        $oldImage = $query->image;
+        $query->delete();
+
+        if ($query) {
+            if (!empty($oldImage) && Storage::disk('public')->exists($oldImage)) {
+                Storage::delete($oldImage);
+            }
+
+            return response()->json(['success' => 'Logo deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Logo deleted failed'], 500);
+        }
     }
 }

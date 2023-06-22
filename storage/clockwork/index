@@ -1216,3 +1216,17 @@
 1687423446-1621-1459461189,1687423445.8764,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,826.76696777344,request
 1687423460-3900-72747826,1687423460.2009,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,511.04187965393,request
 1687423466-2863-1115752614,1687423465.918,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,734.23600196838,request
+1687423529-9674-598069041,1687423529.6579,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,569.45013999939,request
+1687423532-8416-1139524063,1687423532.5681,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,615.00191688538,request
+1687424134-5584-1151136358,1687424134.1685,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,735.20994186401,request
+1687424146-0972-1919920991,1687424145.7884,GET,/logo/1,"App\Http\Controllers\Backend\LogoManagementController@show",200,725.30603408813,request
+1687424150-2461-164325145,1687424149.9935,GET,/product,,404,451.02095603943,request
+1687424179-2477-1696858569,1687424178.9935,GET,/logo/1,"App\Http\Controllers\Backend\LogoManagementController@show",200,653.40495109558,request
+1687424181-9534-2006390965,1687424181.6033,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,684.44204330444,request
+1687424184-8558-384524790,1687424184.5986,GET,/logo/1,"App\Http\Controllers\Backend\LogoManagementController@show",200,581.17389678955,request
+1687424186-5193-2105592590,1687424186.2266,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,594.78092193604,request
+1687424189-2728-1141910109,1687424188.9901,GET,/logo/3,"App\Http\Controllers\Backend\LogoManagementController@show",200,590.97790718079,request
+1687424194-3486-1111338806,1687424194.1178,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,440.74606895447,request
+1687424323-0418-1370696066,1687424322.7701,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,581.78496360779,request
+1687424327-3119-1706573878,1687424327.0373,DELETE,/logo/1,"App\Http\Controllers\Backend\LogoManagementController@destroy",200,562.93606758118,request
+1687424329-2808-35343094,1687424329.0214,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,526.11613273621,request
