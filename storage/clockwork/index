@@ -1295,3 +1295,6 @@
 1687490679-0120-1523676971,1687490678.8007,GET,/fisherman,"App\Http\Controllers\Backend\FishermanController@index",200,703.66311073303,request
 1687490684-1265-996742758,1687490683.8699,DELETE,/fisherman/1,"App\Http\Controllers\Backend\FishermanController@destroy",422,458.09006690979,request
 1687490691-9694-1684307555,1687490691.6662,DELETE,/fisherman/1,"App\Http\Controllers\Backend\FishermanController@destroy",422,588.0708694458,request
+1687490752-9689-1092718494,1687490752.701,GET,/fisherman/create,"App\Http\Controllers\Backend\FishermanController@create",200,580.00898361206,request
+1687490760-1727-1572028455,1687490759.9286,GET,/fisherman,"App\Http\Controllers\Backend\FishermanController@index",200,604.33912277222,request
+1687490788-0234-712815574,1687490787.8202,GET,/fisherman,"App\Http\Controllers\Backend\FishermanController@index",200,556.68091773987,request

@@ -30,7 +30,7 @@
                                 <tr>
                                     <th>Actions</th>
                                     <th>Name</th>
-                                    <th>Username</th>
+                                    <th>Email</th>
                                     <th>Ship Name</th>
                                     <th>Ship Owner</th>
                                     <th>Type Ship</th>
@@ -70,7 +70,7 @@
                                             </div>
                                         </td>
                                         <td>{{ Str::limit($item->name, 20) }}</td>
-                                        <td>{!! Str::limit($item->user->name, 20) !!}</td>
+                                        <td>{!! Str::limit($item->user->email, 20) !!}</td>
                                         <td>{!! Str::limit($item->ship_name, 20) !!}</td>
                                         <td>{!! Str::limit($item->ship_owner, 20) !!}</td>
                                         <td>{!! Str::limit($item->type_ship, 20) !!}</td>
