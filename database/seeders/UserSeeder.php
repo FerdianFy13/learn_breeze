@@ -60,5 +60,13 @@ class UserSeeder extends Seeder
         ]);
 
         $user6->assignRole('Member');
+
+        $user7 = User::create([
+            'name' => 'Auction Supervisor',
+            'email' => 'supervisor@gmail.com',
+            'password' => '12345678'
+        ]);
+
+        $user7->assignRole('Supervisor');
     }
 }

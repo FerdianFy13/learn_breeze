@@ -10,7 +10,7 @@
         </div>
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
-                @role('Administrator|Super Administrator|Contributor|Member|Super Administrator|Partner|Agency')
+                @role('Administrator|Super Administrator|Supervisor|Member|Partner|Agency')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Home</span>
@@ -100,6 +100,21 @@
                                 <i class="ti ti-photo"></i>
                             </span>
                             <span class="hide-menu">Logo</span>
+                        </a>
+                    </li>
+                @endrole
+                @role('Supervisor')
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Fisherman</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('fisherman*') ? 'sidebar-link active' : '' }}"
+                            href="/fisherman" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-fish"></i>
+                            </span>
+                            <span class="hide-menu">Manage Fisherman</span>
                         </a>
                     </li>
                 @endrole
