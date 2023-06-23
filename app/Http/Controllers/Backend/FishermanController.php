@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fisherman;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class FishermanController extends Controller
@@ -78,7 +79,12 @@ class FishermanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Fisherman::findOrFail($id);
+
+        return view('pages.fisherman_manage.detail', [
+            'title' => 'Detail Manage Fisherman',
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -86,7 +92,13 @@ class FishermanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Fisherman::findOrFail($id);
+
+        return view('pages.fisherman_manage.update', [
+            'title' => 'Update Manage Fisherman',
+            'data' => $data,
+            'query' => User::all(),
+        ]);
     }
 
     /**
@@ -94,7 +106,48 @@ class FishermanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'name' => [
+                    'sometimes', 'required', Rule::unique('fishermen', 'name')->ignore($id), 'min:3',
+                    'max:255',
+                ],
+                'ship_name' => 'sometimes|required|max:255|min:3',
+                'ship_owner' => 'sometimes|required|max:255|min:3',
+                'type_ship' => 'sometimes|required|max:255|min:3',
+                'available' => 'sometimes|sometimes|required',
+                'phone_number' => [
+                    'sometimes',
+                    'required',
+                    'min:11',
+                    'max:13',
+                    'not_in:0',
+                    'regex:/^([1-9][0-9]*)$/'
+                ],
+                'result_member' => [
+                    'sometimes',
+                    'required',
+                    'min:1',
+                    'max:13',
+                    'not_in:0',
+                    'regex:/^([1-9][0-9]*)$/'
+                ],
+                'user_id' => [
+                    'sometimes', 'required', Rule::unique('fishermen', 'user_id')->ignore($id), 'exists:users,id',
+                ],
+            ]);
+
+            $fish = Fisherman::findOrFail($id);
+            $fish->update($validation);
+
+            if ($fish) {
+                return response()->json(['success' => 'Fisherman updated successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to updated fisherman'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
