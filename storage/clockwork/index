@@ -1323,3 +1323,12 @@
 1687492945-6876-2075366136,1687492945.5472,GET,/fisherman/1,"App\Http\Controllers\Backend\FishermanController@show",200,372.08890914917,request
 1687492974-8833-1561057515,1687492974.7834,GET,/fisherman/1,"App\Http\Controllers\Backend\FishermanController@show",200,289.28899765015,request
 1687492979-6477-1261618981,1687492979.5309,GET,/fisherman,"App\Http\Controllers\Backend\FishermanController@index",200,277.99010276794,request
+1687503950-6407-30564655,1687503944.6981,GET,/,Closure,200,14069.664001465,request
+1687503982-2836-813542093,1687503982.1073,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,723.73008728027,request
+1687503991-3214-984317013,1687503991.1068,POST,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@store",302,1324.0089416504,request
+1687503992-5910-650991130,1687503992.44,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,582.00311660767,request
+1687504059-1958-997283524,1687504059.0023,GET,/logout,"App\Http\Controllers\Auth\AuthenticatedSessionController@destroy",302,446.03490829468,request
+1687504059-6175-1194135164,1687504059.4565,GET,/,Closure,200,296.89788818359,request
+1687504061-6364-16494460,1687504061.4202,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,360.45789718628,request
+1687504070-4281-309287748,1687504070.2667,POST,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@store",302,498.33989143372,request
+1687504070-9177-174447931,1687504070.7725,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,400.98690986633,request
