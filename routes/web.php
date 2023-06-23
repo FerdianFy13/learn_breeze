@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['role:Administrator|Member|Super Administrator|Partner|Agency']], function () {
+Route::group(['middleware' => ['role:Administrator|Member|Super Administrator|Partner|Agency|Supervisor']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 });
 
@@ -36,3 +36,4 @@ Route::group(['middleware' => ['role:Administrator|Super Administrator']], funct
 require __DIR__ . '/auth.php';
 require __DIR__ . '/super_admin.php';
 require __DIR__ . '/admin.php';
+require __DIR__ . '/supervisor.php';
