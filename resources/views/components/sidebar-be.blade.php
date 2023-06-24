@@ -117,6 +117,19 @@
                             <span class="hide-menu">Manage Fisherman</span>
                         </a>
                     </li>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Post</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('post*') ? 'sidebar-link active' : '' }}" href="/post"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-brand-figma"></i>
+                            </span>
+                            <span class="hide-menu">Manage Post</span>
+                        </a>
+                    </li>
                 @endrole
             </ul>
         </nav>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuctionPost;
+use App\Models\TransactionAgency;
+// use App\Models\AuctionPost;
 use Illuminate\Http\Request;
 
 class AuctionPostController extends Controller
@@ -12,7 +15,13 @@ class AuctionPostController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.auction_post.index', [
+            'title' => 'Manage Post',
+            'title_a' => 'Auction Post',
+            'title_b' => 'Transaction Post',
+            'title_c' => 'Data Post',
+            'data' => TransactionAgency::with('user', 'partner', 'post')->orderBY('product_name', 'asc')
+        ]);
     }
 
     /**

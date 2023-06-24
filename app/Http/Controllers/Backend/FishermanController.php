@@ -18,7 +18,7 @@ class FishermanController extends Controller
     {
         return view('pages.fisherman_manage.index', [
             'title' => 'Manage Fisherman',
-            'data' => Fisherman::orderBy('name', 'asc')->get(),
+            'data' => Fisherman::with('user')->orderBy('name', 'asc')->get(),
         ]);
     }
 
