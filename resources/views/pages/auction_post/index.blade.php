@@ -21,6 +21,10 @@
             font-weight: 500;
         }
 
+        #transaction-category {
+            width: 100%;
+        }
+
         @media (max-width: 767.98px) {
             .nav-pills .nav-item {
                 flex: 0 0 33.33%;
@@ -53,18 +57,31 @@
                     <div class="tab-content mt-4" id="myTabContent">
                         <div class="tab-pane fade show active" id="auction-tab-pane" role="tabpanel"
                             aria-labelledby="auction-tab" tabindex="0">
-                        @section('auction')
                             @include('pages.auction_post.v_auction')
-                        @show
+                        </div>
+                        <div class="tab-pane fade show active" id="transaction-tab-pane" role="tabpanel"
+                            aria-labelledby="transaction-tab" tabindex="0">
+                            @include('pages.auction_post.v_transaction')
+                        </div>
+                        <div class="tab-pane fade show active" id="datas-tab-pane" role="tabpanel"
+                            aria-labelledby="datas-tab" tabindex="0">
+                            3
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="transaction-tab-pane" role="tabpanel"
-                        aria-labelledby="transaction-tab" tabindex="0">2</div>
-                    <div class="tab-pane fade" id="datas-tab-pane" role="tabpanel" aria-labelledby="datas-tab"
-                        tabindex="0">3</div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabPanes.forEach(pane => {
+            if (pane.id !== 'auction-tab-pane') {
+                pane.classList.remove('show');
+            }
+        });
+    </script>
 
     {{-- <script>
         $(document).ready(function() {
