@@ -29,7 +29,7 @@ class AuctionPostController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

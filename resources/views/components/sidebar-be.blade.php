@@ -122,8 +122,8 @@
                         <span class="hide-menu">Post</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link {{ Request::is('post*') ? 'sidebar-link active' : '' }}" href="/post"
-                            aria-expanded="false">
+                        <a class="sidebar-link {{ Request::is('post*', 'transaction*') ? 'sidebar-link active' : '' }}"
+                            href="/post" aria-expanded="false">
                             <span>
                                 <i class="ti ti-brand-figma"></i>
                             </span>

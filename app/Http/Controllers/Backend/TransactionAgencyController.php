@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuctionPost;
+use App\Models\Partner;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionAgencyController extends Controller
@@ -20,7 +23,12 @@ class TransactionAgencyController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.auction_post.v_insert_transaction', [
+            'title' => 'Insert Transaction Post',
+            'user' => User::all(),
+            'post' => AuctionPost::all(),
+            'partner' => Partner::all()
+        ]);
     }
 
     /**

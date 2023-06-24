@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="table-responsive">
-    <a href="/post/create" class="text-decoration-none btn btn-outline-dark mb-3"><i class="ti ti-plus me-1"></i>Add
+    <a href="/transaction/create" class="text-decoration-none btn btn-outline-dark mb-3"><i class="ti ti-plus me-1"></i>Add
         {{ $title_b }}</a>
 
     <table id="transaction-category" class="table" style="width:100%">

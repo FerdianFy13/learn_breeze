@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('image')->nullable();
             $table->bigInteger('open_price');
-            $table->bigInteger('product_weight');
+            $table->decimal('product_weight');
             $table->string('product_quality');
             $table->text('description');
             $table->timestamps();
