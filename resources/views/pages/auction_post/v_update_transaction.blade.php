@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Update Table Auction Post</h5>
+                            <h5 class="card-title fw-semibold">Update Table Transaction Post</h5>
                         </div>
                     </div>
                     <div>
@@ -63,8 +63,21 @@
                                     readonly>
                             </div>
                         </div>
+                        <div class="row">
+                            <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                @if (Storage::exists($data->image))
+                                    <img class="img-preview img-fluid col-sm-7 mb-3"
+                                        src="{{ asset('storage/' . $data->image) }}" id="imagePreview">
+                                @else
+                                    <input type="text" class="form-control" id="inputCountry" required
+                                        name="origin_country"
+                                        value="Image not found in storage and There is no proof of payment yet" readonly>
+                                @endif
+                            </div>
+                        </div>
                         <form id="formInsert" enctype="multipart/form-data" method="post"
-                            action="{{ route('auction.update', $data->id) }}">
+                            action="{{ route('transaction.update', $data->id) }}">
                             @method('patch')
                             @csrf
                             <div class="mb-3 row">
