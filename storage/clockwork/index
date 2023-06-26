@@ -1482,3 +1482,16 @@
 1687764221-1814-460387855,1687764220.9489,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,453.36699485779,request
 1687764227-7111-1592232333,1687764227.5391,DELETE,/transaction/2,"App\Http\Controllers\Backend\TransactionAgencyController@destroy",200,349.63583946228,request
 1687764229-6205-304786488,1687764229.3847,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,438.00187110901,request
+1687765002-1464-1608970881,1687765001.9167,DELETE,/transaction/3,"App\Http\Controllers\Backend\TransactionAgencyController@destroy",422,438.32993507385,request
+1687765198-1462-1088975194,1687765197.9808,GET,/transaction/3/edit,"App\Http\Controllers\Backend\TransactionAgencyController@edit",200,471.86017036438,request
+1687765216-5478-474260360,1687765216.3629,PATCH,/transaction/3,"App\Http\Controllers\Backend\TransactionAgencyController@update",201,359.90381240845,request
+1687765221-1187-822169291,1687765220.9087,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,639.33610916138,request
+1687765400-4286-903207934,1687765400.2651,GET,/transaction/create,"App\Http\Controllers\Backend\TransactionAgencyController@create",200,404.70600128174,request
+1687765416-4911-886113734,1687765416.2993,GET,/transaction/create,"App\Http\Controllers\Backend\TransactionAgencyController@create",200,472.1519947052,request
+1687765648-3408-614923808,1687765648.1627,GET,/transaction/create,"App\Http\Controllers\Backend\TransactionAgencyController@create",200,580.97100257874,request
+1687765699-8426-469382646,1687765699.6863,GET,/transaction/create,"App\Http\Controllers\Backend\TransactionAgencyController@create",200,560.78791618347,request
+1687765706-8830-315680306,1687765706.7578,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,323.86994361877,request
+1687765713-8784-130457941,1687765713.7444,GET,/post/create,"App\Http\Controllers\Backend\AuctionPostController@create",200,348.55079650879,request
+1687765722-9997-1622360057,1687765722.8242,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,399.51395988464,request
+1687765750-2910-404317011,1687765750.1686,GET,/fisherman,"App\Http\Controllers\Backend\FishermanController@index",200,282.98187255859,request
+1687765752-9327-1750122749,1687765752.8069,GET,/fisherman/create,"App\Http\Controllers\Backend\FishermanController@create",200,319.55099105835,request

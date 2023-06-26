@@ -14,6 +14,11 @@
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('dist/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/css/data_tables.css') }}" />
+    <style>
+        #formInsert .select2 {
+            width: 100% !important;
+        }
+    </style>
     {{-- end css --}}
 
     {{-- cdn --}}
