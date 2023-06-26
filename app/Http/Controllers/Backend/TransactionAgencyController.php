@@ -8,6 +8,7 @@ use App\Models\Partner;
 use App\Models\TransactionAgency;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class TransactionAgencyController extends Controller
@@ -95,7 +96,12 @@ class TransactionAgencyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = TransactionAgency::findOrFail($id);
+
+        return view('pages.auction_post.v_detail_transaction', [
+            'title' => 'Detail transaction Post',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -103,7 +109,12 @@ class TransactionAgencyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = TransactionAgency::findOrFail($id);
+
+        return view('pages.auction_post.v_update_transaction', [
+            'title' => 'Update Transaction Post',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -111,7 +122,22 @@ class TransactionAgencyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'status' => 'sometimes|required',
+            ]);
+
+            $product = TransactionAgency::findOrFail($id);
+            $product->update($validation);
+
+            if ($product) {
+                return response()->json(['success' => 'Transaction Post update successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to update transaction post'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
@@ -119,6 +145,25 @@ class TransactionAgencyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $query = TransactionAgency::findOrFail($id);
+        $oldImage = $query->image;
+
+        if ($query->status == "Accepted") {
+            return response()->json(['error' => 'Transaction Post cannot be deleted because it is currently accepted'], 422);
+        } else  if ($query->status == "Completed") {
+            return response()->json(['error' => 'Transaction Post cannot be deleted because it is currently completed'], 422);
+        }
+
+        $query->delete();
+
+        if ($query) {
+            if (!empty($oldImage) && Storage::disk('public')->exists($oldImage)) {
+                Storage::delete($oldImage);
+            }
+
+            return response()->json(['success' => 'Transaction Post deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Transaction Post deleted failed'], 500);
+        }
     }
 }
