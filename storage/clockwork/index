@@ -1434,3 +1434,16 @@
 1687753835-3344-1972291298,1687753835.0268,GET,/auction/2,"App\Http\Controllers\Backend\AuctionController@show",200,597.47910499573,request
 1687753848-8702-1197679404,1687753848.6198,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,520.92885971069,request
 1687753948-8948-485192607,1687753948.6067,DELETE,/post/4,"App\Http\Controllers\Backend\AuctionPostController@destroy",422,506.58822059631,request
+1687754456-9897-1387957412,1687754456.6832,GET,/product,,404,529.71816062927,request
+1687754461-7814-2016305302,1687754461.5404,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",403,534.29102897644,request
+1687754467-7542-1673360074,1687754467.5238,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,449.98383522034,request
+1687754477-0924-1440923241,1687754476.7266,POST,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@store",302,845.31998634338,request
+1687754477-7875-1184179154,1687754477.5828,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,419.41809654236,request
+1687754496-6051-1150109125,1687754496.3766,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,564.60809707642,request
+1687754502-4587-1264126237,1687754502.2313,GET,/auction/2/edit,"App\Http\Controllers\Backend\AuctionController@edit",200,567.25597381592,request
+1687754748-9108-1454453035,1687754748.6067,GET,/auction/2/edit,"App\Http\Controllers\Backend\AuctionController@edit",200,787.47987747192,request
+1687754786-6887-1658581618,1687754786.4665,GET,/auction/2/edit,"App\Http\Controllers\Backend\AuctionController@edit",200,583.8029384613,request
+1687754815-4416-1856424564,1687754815.2394,GET,/auction/2/edit,"App\Http\Controllers\Backend\AuctionController@edit",200,476.76110267639,request
+1687755009-6052-729059601,1687755009.3667,GET,/auction/2/edit,"App\Http\Controllers\Backend\AuctionController@edit",200,680.21488189697,request
+1687755022-0567-2114490697,1687755021.8006,PATCH,/auction/2,"App\Http\Controllers\Backend\AuctionController@update",201,556.63084983826,request
+1687755025-8729-1663775274,1687755025.5366,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,660.22396087646,request

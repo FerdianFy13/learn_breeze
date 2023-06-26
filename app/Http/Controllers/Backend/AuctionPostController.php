@@ -156,9 +156,9 @@ class AuctionPostController extends Controller
             }
 
             if ($product) {
-                return response()->json(['success' => 'Auction Post update successfully'], 201);
+                return response()->json(['success' => 'Datas Post update successfully'], 201);
             } else {
-                return response()->json(['error' => 'Failed to update auction post'], 500);
+                return response()->json(['error' => 'Failed to update datas post'], 500);
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
