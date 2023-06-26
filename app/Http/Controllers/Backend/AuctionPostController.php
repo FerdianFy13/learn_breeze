@@ -83,7 +83,12 @@ class AuctionPostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = AuctionPost::findOrFail($id);
+
+        return view('pages.auction_post.v_detail_datas', [
+            'title' => 'Detail Datas Post',
+            'data' => $data
+        ]);
     }
 
     /**

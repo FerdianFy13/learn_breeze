@@ -47,7 +47,7 @@
                                     <div class="mt-1">
                                         <select class="form-control" name="auction_post_id" required>
                                             <option selected>Please select auction post</option>
-                                            @foreach ($partner as $item)
+                                            @foreach ($post as $item)
                                                 <option value="{{ $item->id }}">{{ $item->product_name }}</option>
                                             @endforeach
                                         </select>
