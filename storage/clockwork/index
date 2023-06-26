@@ -1447,3 +1447,4 @@
 1687755009-6052-729059601,1687755009.3667,GET,/auction/2/edit,"App\Http\Controllers\Backend\AuctionController@edit",200,680.21488189697,request
 1687755022-0567-2114490697,1687755021.8006,PATCH,/auction/2,"App\Http\Controllers\Backend\AuctionController@update",201,556.63084983826,request
 1687755025-8729-1663775274,1687755025.5366,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,660.22396087646,request
+1687755253-7746-1043383140,1687755253.4563,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,766.78204536438,request

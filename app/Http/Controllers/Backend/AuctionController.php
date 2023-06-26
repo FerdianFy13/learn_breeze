@@ -87,6 +87,13 @@ class AuctionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $query = TransactionAgency::findOrFail($id);
+        $query->delete();
+
+        if ($query) {
+            return response()->json(['success' => 'Auction Post deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Auction Post deleted failed'], 500);
+        }
     }
 }
