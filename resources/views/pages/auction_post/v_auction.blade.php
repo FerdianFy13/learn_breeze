@@ -10,8 +10,9 @@
                 <th>Actions</th>
                 <th>Transaction Number</th>
                 <th>Partner</th>
-                <th>Post Purchased</th>
+                <th>Product Purchased</th>
                 <th>Auction Price</th>
+                <th>Result Price</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -44,8 +45,9 @@
                     </td>
                     <td>{{ Str::limit($item->transaction_number, 20) }}</td>
                     <td>{!! Str::limit($item->partner->person_responsible, 20) !!}</td>
-                    <td>{!! Str::limit($item->post_id, 20) !!}</td>
+                    <td>{!! Str::limit($item->auction->product_name, 20) !!}</td>
                     <td>{!! Str::limit($item->price, 20) !!}</td>
+                    <td>{!! Str::limit($item->bargain_price, 20) !!}</td>
                     <td>{!! Str::limit($item->status, 20) !!}</td>
                 </tr>
             @endforeach

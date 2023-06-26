@@ -119,7 +119,7 @@
                                 icon: 'success',
                                 confirmButtonColor: '#0F345E',
                             }).then((result) => {
-                                window.location.href = '/product';
+                                window.location.href = '/post';
                             });
                         },
                         error: function(xhr) {

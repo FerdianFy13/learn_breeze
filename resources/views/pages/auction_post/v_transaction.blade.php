@@ -14,7 +14,7 @@
                 <th>Transaction Number</th>
                 <th>Partner</th>
                 <th>Transfer Evidience</th>
-                <th>Post Purchased</th>
+                <th>Product Purchased</th>
                 <th>Auction Price</th>
                 <th>Status</th>
             </tr>
@@ -48,8 +48,14 @@
                     </td>
                     <td>{{ Str::limit($item->transaction_number, 20) }}</td>
                     <td>{!! Str::limit($item->partner->person_responsible, 20) !!}</td>
-                    <td>{{ Str::limit($item->user->id, 20) }}</td>
-                    <td>{!! Str::limit($item->price, 20) !!}</td>
+                    <td>
+                        @if ($item->image)
+                            Proof of Payment Exists
+                        @else
+                            Proof of Payment Blank
+                        @endif
+                    </td>
+                    <td>{{ $item->auction->product_name }}</td>
                     <td>{!! Str::limit($item->price, 20) !!}</td>
                     <td>{!! Str::limit($item->status, 20) !!}</td>
                 </tr>

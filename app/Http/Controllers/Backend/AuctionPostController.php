@@ -24,8 +24,8 @@ class AuctionPostController extends Controller
             'title_a' => 'Auction Post',
             'title_b' => 'Transaction Post',
             'title_c' => 'Data Post',
-            'data' => TransactionAgency::with('user', 'partner', 'auction_post')->orderBY('transaction_number', 'asc')->get(),
-            'transaction' => TransactionAgency::with(['user', 'partner', 'auction_post'])->orderBY('transaction_number', 'asc')->get(),
+            'data' => TransactionAgency::with('user', 'partner', 'auction_post', 'auction')->where('status', '=', 'pending')->orderBY('transaction_number', 'asc')->get(),
+            'transaction' => TransactionAgency::with(['user', 'partner', 'auction_post', 'auction'])->where('status', '!=', 'Pending')->orderBY('transaction_number', 'asc')->get(),
             'datas' => AuctionPost::with('user')->orderBy('product_name', 'asc')->get(),
         ]);
     }
