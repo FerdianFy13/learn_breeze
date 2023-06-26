@@ -21,3 +21,9 @@ $(document).ready(function () {
         scrollX: true,
     });
 });
+
+$(document).ready(function () {
+    $("#datas-category").DataTable({
+        scrollX: true,
+    });
+});

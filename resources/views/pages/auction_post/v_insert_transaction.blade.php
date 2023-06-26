@@ -20,7 +20,7 @@
                                         <select class="form-control" name="user_id" required>
                                             <option selected>Please select user name</option>
                                             @foreach ($user as $item)
-                                                @if ($item->hasRole('Member'))
+                                                @if ($item->hasRole('Supervisor'))
                                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                 @endif
                                             @endforeach

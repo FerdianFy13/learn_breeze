@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->bigInteger('open_price');
             $table->decimal('product_weight');
-            $table->string('product_quality');
+            $table->enum('product_quality', ['Low', 'Medium', 'High']);
             $table->text('description');
             $table->timestamps();
         });

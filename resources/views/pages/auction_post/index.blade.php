@@ -65,7 +65,7 @@
                         </div>
                         <div class="tab-pane fade show active" id="datas-tab-pane" role="tabpanel"
                             aria-labelledby="datas-tab" tabindex="0">
-                            3
+                            @include('pages.auction_post.v_datas')
                         </div>
                     </div>
                 </div>
