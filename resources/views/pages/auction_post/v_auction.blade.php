@@ -44,7 +44,7 @@
                     </td>
                     <td>{{ Str::limit($item->transaction_number, 20) }}</td>
                     <td>{!! Str::limit($item->partner->person_responsible, 20) !!}</td>
-                    <td>{!! Str::limit($item->post->product_name, 20) !!}</td>
+                    <td>{!! Str::limit($item->post_id, 20) !!}</td>
                     <td>{!! Str::limit($item->price, 20) !!}</td>
                     <td>{!! Str::limit($item->status, 20) !!}</td>
                 </tr>
