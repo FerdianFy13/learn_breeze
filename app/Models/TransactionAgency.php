@@ -21,7 +21,7 @@ class TransactionAgency extends Model
         return $this->belongsTo(Partner::class);
     }
 
-    public function post()
+    public function auction_post()
     {
         return $this->belongsTo(AuctionPost::class);
     }
