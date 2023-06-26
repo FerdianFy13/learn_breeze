@@ -190,4 +190,14 @@ class AuctionPostController extends Controller
             return response()->json(['error' => 'Auction Post deleted failed'], 500);
         }
     }
+
+    public function detail($id)
+    {
+        $data = TransactionAgency::findOrFail($id);
+
+        return view('pages.auction_post.v_detail_auction', [
+            'title' => 'Detail Auction Post',
+            'data' => $data
+        ]);
+    }
 }
