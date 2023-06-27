@@ -131,6 +131,21 @@
                         </a>
                     </li>
                 @endrole
+                @role('Supervisor')
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">UMKM Product</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}" href="/products"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-building-store"></i>
+                            </span>
+                            <span class="hide-menu">Product Management</span>
+                        </a>
+                    </li>
+                @endrole
             </ul>
         </nav>
     </div>
