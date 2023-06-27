@@ -72,8 +72,17 @@
                                         <td>{{ Str::limit($item->title, 20) }}</td>
                                         <td>{!! Str::limit($item->description, 20) !!}</td>
                                         <td>Rp{{ number_format($item->price, 2, ',', '.') }}</td>
-                                        <td>{!! Str::limit($item->phone_number, 20) !!}</td>
-                                        <td>{!! Str::limit($item->instagram, 20) !!}</td>
+                                        <td>
+                                            <a class="text-primary fw-bold" href="https://wa.me/{{ $item->phone_number }}"
+                                                target="_blank">
+                                                {!! Str::limit($item->phone_number, 20) !!}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="text-primary fw-bold" href="{{ $item->instagram }}" target="_blank">
+                                                {!! Str::limit(pathinfo($item->instagram, PATHINFO_FILENAME), 20) !!}
+                                            </a>
+                                        </td>
                                         <td>{!! Str::limit($item->available, 20) !!}</td>
                                     </tr>
                                 @endforeach

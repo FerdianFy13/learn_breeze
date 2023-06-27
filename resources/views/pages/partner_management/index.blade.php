@@ -70,7 +70,12 @@
                                         <td>{{ Str::limit($item->user->name, 20) }}</td>
                                         <td>{{ Str::limit($item->person_responsible, 20) }}</td>
                                         <td>{!! Str::limit(strip_tags($item->address), 20) !!}</td>
-                                        <td>{{ $item->phone_number }}</td>
+                                        <td>
+                                            <a class="text-primary fw-bold" href="https://wa.me/{{ $item->phone_number }}"
+                                                target="_blank">
+                                                {!! Str::limit($item->phone_number, 20) !!}
+                                            </a>
+                                        </td>
                                         <td>{{ Str::limit($item->business_type, 20) }}</td>
                                         <td>{{ $item->available }}</td>
                                     </tr>

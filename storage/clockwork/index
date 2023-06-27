@@ -1436,3 +1436,10 @@
 1687832965-7316-55604123,1687832962.1243,POST,/products,"App\Http\Controllers\Backend\ProductManagementController@store",422,3770.5879211426,request
 1687832991-7071-951729089,1687832991.5436,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,322.83902168274,request
 1687833013-5863-1679906680,1687833013.4006,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,415.96102714539,request
+1687833571-2698-285641306,1687833571.1648,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,408.77413749695,request
+1687833642-6248-1614571931,1687833642.5435,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,227.1089553833,request
+1687833679-0745-1199537482,1687833678.9891,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,324.42498207092,request
+1687833690-6695-1676107152,1687833690.5893,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,396.76403999329,request
+1687833859-3430-165649966,1687833859.2538,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,346.03381156921,request
+1687833878-4772-923931027,1687833878.3934,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,429.5539855957,request
+1687833957-9256-1648713280,1687833957.8349,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,206.33292198181,request

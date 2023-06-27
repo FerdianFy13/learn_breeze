@@ -74,7 +74,12 @@
                                         <td>{!! Str::limit($item->ship_name, 20) !!}</td>
                                         <td>{!! Str::limit($item->ship_owner, 20) !!}</td>
                                         <td>{!! Str::limit($item->type_ship, 20) !!}</td>
-                                        <td>{!! Str::limit($item->phone_number, 20) !!}</td>
+                                        <td>
+                                            <a class="text-primary fw-bold" href="https://wa.me/{{ $item->phone_number }}"
+                                                target="_blank">
+                                                {!! Str::limit($item->phone_number, 20) !!}
+                                            </a>
+                                        </td>
                                         <td>{!! Str::limit($item->result_member, 20) !!}</td>
                                         <td>{!! Str::limit($item->available, 20) !!}</td>
                                     </tr>
