@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductUMKM;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class ProductManagementController extends Controller
@@ -84,7 +86,12 @@ class ProductManagementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = ProductUMKM::findOrFail($id);
+
+        return view("pages.product_management.detail", [
+            'title' => 'Detail Product Management',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -92,7 +99,13 @@ class ProductManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = ProductUMKM::findOrFail($id);
+
+        return view("pages.product_management.update", [
+            'title' => 'Update Product Management',
+            'data' => $data,
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -100,7 +113,63 @@ class ProductManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'user_id' => 'sometimes|required|exists:users,id',
+                'title' => [
+                    'sometimes', 'required', Rule::unique('product_u_m_k_m_s', 'title')->ignore($id), 'max:255', 'min:3',
+                ],
+                'description' => 'sometimes|required|max:255|min:3',
+                'price' => [
+                    'sometimes',
+                    'required',
+                    'min:3',
+                    'max:10',
+                    'not_in:0',
+                    'regex:/^([1-9][0-9]*)$/'
+                ],
+                'phone_number' => [
+                    'sometimes',
+                    'required',
+                    'min:11',
+                    'max:13',
+                    'not_in:0',
+                    'regex:/^([1-9][0-9]*)$/'
+                ],
+                'instagram' => 'sometimes|required|url|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_]+\/?$/',
+                'available' => 'sometimes|required',
+                'image' => 'sometimes|required|image|file|max:4020',
+            ]);
+
+            $product = ProductUMKM::findOrFail($id);
+            $oldImage = $product->image;
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('product_management_images');
+            }
+
+            $product->update($validation);
+
+            if ($request->file('image') && $oldImage) {
+                Storage::delete($oldImage); // Hapus file gambar lama
+            }
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('product_management_images');
+            }
+
+            if ($product) {
+                return response()->json(['success' => 'Product Management updated successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to updated product management'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
