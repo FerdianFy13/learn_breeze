@@ -177,6 +177,23 @@ class ProductManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $query = ProductUMKM::findOrFail($id);
+        $oldImage = $query->image;
+
+        if ($query->available == "Enabled") {
+            return response()->json(['error' => 'Product management cannot be deleted because it is currently enabled'], 422);
+        }
+
+        $query->delete();
+
+        if ($query) {
+            if (!empty($oldImage) && Storage::disk('public')->exists($oldImage)) {
+                Storage::delete($oldImage);
+            }
+
+            return response()->json(['success' => 'Product management deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Product management deleted failed'], 500);
+        }
     }
 }

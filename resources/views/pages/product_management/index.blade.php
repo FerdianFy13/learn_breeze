@@ -138,7 +138,7 @@
                                 if (xhr.status === 422) {
                                     Swal.fire({
                                         title: 'Error',
-                                        text: 'Cannot delete item. It is still used in other records.',
+                                        text: 'Cannot to delete item. Status is still enabled.',
                                         icon: 'error',
                                         confirmButtonColor: '#0F345E',
                                     });
