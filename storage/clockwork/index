@@ -1450,3 +1450,8 @@
 1687837015-7251-1529426973,1687837015.5148,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,742.89202690125,request
 1687837016-3799-1395348556,1687837015.9704,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,794.88301277161,request
 1687837019-8577-375794811,1687837019.5739,DELETE,/products/1,"App\Http\Controllers\Backend\ProductManagementController@destroy",422,533.07890892029,request
+1687838064-1490-38661162,1687838063.8857,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,881.37912750244,request
+1687838102-1741-936174323,1687838102.002,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,644.04320716858,request
+1687838124-9895-254697692,1687838124.7801,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,572.13401794434,request
+1687838172-1663-2133910288,1687838171.9686,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,495.76091766357,request
+1687838204-9812-191262727,1687838204.6582,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,898.05006980896,request
