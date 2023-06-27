@@ -1455,3 +1455,14 @@
 1687838124-9895-254697692,1687838124.7801,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,572.13401794434,request
 1687838172-1663-2133910288,1687838171.9686,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,495.76091766357,request
 1687838204-9812-191262727,1687838204.6582,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,898.05006980896,request
+1687848839-4201-316417431,1687848833.7252,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,12805.912017822,request
+1687849843-2306-1013370371,1687849843.1125,GET,/,Closure,200,1301.0799884796,request
+1687849861-5464-865300640,1687849861.335,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,470.74198722839,request
+1687849874-1348-306444536,1687849873.8381,POST,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@store",302,1465.2512073517,request
+1687849875-5238-749678205,1687849875.3164,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,634.87601280212,request
+1687849899-4002-787123454,1687849899.2581,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,416.04709625244,request
+1687851442-3644-1372961070,1687851442.1859,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,414.23416137695,request
+1687851691-7494-505629398,1687851691.6055,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,374.4490146637,request
+1687851729-4192-1678002545,1687851729.2529,GET,/informationn,,404,449.10383224487,request
+1687851740-4253-2064666812,1687851740.3053,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,435.99700927734,request
+1687851743-2810-755289878,1687851743.1035,GET,/information,"App\Http\Controllers\Backend\InformationManagementController@index",200,449.77903366089,request

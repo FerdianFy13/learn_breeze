@@ -138,7 +138,7 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link {{ Request::is('information*') ? 'sidebar-link active' : '' }}"
-                            href="/informationn" aria-expanded="false">
+                            href="/information" aria-expanded="false">
                             <span>
                                 <i class="ti ti-atom-2"></i>
                             </span>
