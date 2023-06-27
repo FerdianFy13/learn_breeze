@@ -1444,3 +1444,9 @@
 1687836575-2099-1840407331,1687836574.9698,GET,/products/1/edit,"App\Http\Controllers\Backend\ProductManagementController@edit",200,508.59999656677,request
 1687836583-3490-842918010,1687836583.0649,PATCH,/products/1,"App\Http\Controllers\Backend\ProductManagementController@update",422,537.08505630493,request
 1687836585-4840-422074883,1687836585.2146,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,500.9241104126,request
+1687836953-5759-1898816565,1687836953.2118,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,1070.6760883331,request
+1687836959-6737-1419202739,1687836959.4121,DELETE,/products/1,"App\Http\Controllers\Backend\ProductManagementController@destroy",422,467.99993515015,request
+1687837014-3688-1780053093,1687837014.0874,DELETE,/products/1,"App\Http\Controllers\Backend\ProductManagementController@destroy",422,489.33005332947,request
+1687837015-7251-1529426973,1687837015.5148,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,742.89202690125,request
+1687837016-3799-1395348556,1687837015.9704,GET,/products,"App\Http\Controllers\Backend\ProductManagementController@index",200,794.88301277161,request
+1687837019-8577-375794811,1687837019.5739,DELETE,/products/1,"App\Http\Controllers\Backend\ProductManagementController@destroy",422,533.07890892029,request
