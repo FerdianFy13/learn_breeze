@@ -70,7 +70,12 @@ class InformationManagementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Information::findOrFail($id);
+
+        return view('pages.information_manage.detail', [
+            'title' => 'Detail Information Management',
+            'data' => $data,
+        ]);
     }
 
     /**
