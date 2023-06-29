@@ -134,6 +134,19 @@
                 @role('Supervisor')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Information</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('information*') ? 'sidebar-link active' : '' }}"
+                            href="/information" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-atom-2"></i>
+                            </span>
+                            <span class="hide-menu">Manage Information</span>
+                        </a>
+                    </li>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">UMKM Product</span>
                     </li>
                     <li class="sidebar-item">
@@ -142,7 +155,7 @@
                             <span>
                                 <i class="ti ti-building-store"></i>
                             </span>
-                            <span class="hide-menu">Product Management</span>
+                            <span class="hide-menu">Manage Product</span>
                         </a>
                     </li>
                 @endrole
