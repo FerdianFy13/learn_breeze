@@ -7,6 +7,7 @@ use App\Models\Information;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class InformationManagementController extends Controller
@@ -83,7 +84,13 @@ class InformationManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Information::findOrFail($id);
+
+        return view('pages.information_manage.update', [
+            'title' => 'Update Information Management',
+            'data' => $data,
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -91,7 +98,46 @@ class InformationManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'user_id' => 'sometimes|required|exists:users,id',
+                'title' => [
+                    'sometimes', 'required', Rule::unique('information', 'title')->ignore($id), 'max:255', 'min:3',
+                ],
+                'description' => 'sometimes|required|max:255|min:3',
+                'available' => 'sometimes|required',
+                'image' => 'sometimes|required|image|file|max:4020',
+            ]);
+
+            $product = Information::findOrFail($id);
+            $oldImage = $product->image;
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('information_management_images');
+            }
+
+            $product->update($validation);
+
+            if ($request->file('image') && $oldImage) {
+                Storage::delete($oldImage); // Hapus file gambar lama
+            }
+
+            if ($request->file('image')) {
+                $validation['image'] = $request
+                    ->file('image')
+                    ->store('information_management_images');
+            }
+
+            if ($product) {
+                return response()->json(['success' => 'Information Management updated successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to updated information management'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
