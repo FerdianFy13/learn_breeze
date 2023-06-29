@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Permission;
@@ -91,13 +92,22 @@ class PermissionManagementController extends Controller
                 ],
             ]);
 
-            $category = Permission::findOrFail($id);
-            $category->update($validation);
+            $permission = Permission::findOrFail($id);
 
-            if ($category) {
-                return response()->json(['success' => 'Category updated successfully'], 201);
+            $modelHasPermissionsCount = DB::table('model_has_permissions')
+                ->where('permission_id', $permission->id)
+                ->count();
+
+            if ($modelHasPermissionsCount > 0) {
+                return response()->json(['error' => 'Cannot update permission, it is still used in model_has_permissions'], 419);
+            }
+
+            $permission->update($validation);
+
+            if ($permission) {
+                return response()->json(['success' => 'Permission updated successfully'], 201);
             } else {
-                return response()->json(['error' => 'Failed to updated category'], 500);
+                return response()->json(['error' => 'Failed to updated Permission'], 500);
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
@@ -109,8 +119,17 @@ class PermissionManagementController extends Controller
      */
     public function destroy($id)
     {
+        $permission = Permission::findOrFail($id);
 
-        $query = Permission::findOrFail($id)->delete();
+        $modelHasPermissionsCount = DB::table('model_has_permissions')
+            ->where('permission_id', $permission->id)
+            ->count();
+
+        if ($modelHasPermissionsCount > 0) {
+            return response()->json(['error' => 'Cannot delete permission, it is still used in model_has_permissions'], 422);
+        }
+
+        $query = $permission->delete();
 
         if ($query) {
             return response()->json(['success' => 'Permission deleted successfully'], 200);

@@ -9,3 +9,21 @@ $(document).ready(function () {
         scrollX: true,
     });
 });
+
+$(document).ready(function () {
+    $("#auction-category").DataTable({
+        scrollX: true,
+    });
+});
+
+$(document).ready(function () {
+    $("#transaction-category").DataTable({
+        scrollX: true,
+    });
+});
+
+$(document).ready(function () {
+    $("#datas-category").DataTable({
+        scrollX: true,
+    });
+});

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Status;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
@@ -18,7 +20,7 @@ class UserManagemenController extends Controller
     {
         return view('pages.user_management.index', [
             'title' => 'User Management',
-            'data' => User::with('role')->get()
+            'data' => User::with('role')->orderBy('name', 'asc')->get(),
         ]);
     }
 
@@ -57,11 +59,12 @@ class UserManagemenController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
+        $role = Role::all();
 
         return view('pages.user_management.update', [
             'title' => 'Update User Management',
             'data' => $user,
-            'roles' => Role::all(),
+            'role' => $role,
         ]);
     }
 
@@ -97,5 +100,33 @@ class UserManagemenController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function edituser(string $id)
+    {
+        $user = User::findOrFail($id);
+        $role = Role::all();
+
+        return view('pages.user_management.update_user', [
+            'title' => 'Update Role User Management',
+            'data' => $user,
+            'role' => $role,
+        ]);
+    }
+
+
+    public function updateuser(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $roleName = $request->input('role');
+            $role = Role::where('name', $roleName)->first();
+            $user->syncRoles([$role]);
+            return redirect()->route('user.index')->with('success', 'User role updated successfully');
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('error', 'User not found');
+        } catch (QueryException $e) {
+            return redirect()->back()->with('error', 'Database error');
+        }
     }
 }

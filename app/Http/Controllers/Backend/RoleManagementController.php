@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -26,7 +30,9 @@ class RoleManagementController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.role_management.insert', [
+            'title' => 'Insert Role Management',
+        ]);
     }
 
     /**
@@ -34,15 +40,35 @@ class RoleManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'name' => 'required|unique:roles|max:255|min:3',
+            ]);
+
+            $role = Role::create($validation);
+
+            if ($role) {
+                return response()->json(['success' => 'Role created successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to create Role'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+
+        return view('pages.role_management.detail', [
+            'title' => 'Detail Role Management',
+            'data' => $role,
+        ]);
     }
 
     /**
@@ -50,15 +76,46 @@ class RoleManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        return view('pages.role_management.update_role', [
+            'title' => 'Update Role Management',
+            'data' => $role,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $validation = $request->validate([
+                'name' => [
+                    'sometimes', 'required', Rule::unique('roles', 'name')->ignore($id), 'max:255', 'min:3',
+                ],
+            ]);
+
+            $role = Role::findOrFail($id);
+
+            $modelHasPermissionsCount = DB::table('model_has_roles')
+                ->where('role_id', $role->id)
+                ->count();
+
+            if ($modelHasPermissionsCount > 0) {
+                return response()->json(['error' => 'Cannot update role, it is still used in model_has_roles'], 419);
+            }
+
+            $role->update($validation);
+
+            if ($role) {
+                return response()->json(['success' => 'Role updated successfully'], 201);
+            } else {
+                return response()->json(['error' => 'Failed to updated Role'], 500);
+            }
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
@@ -66,6 +123,41 @@ class RoleManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::findOrFail($id);
+
+        $modelHasPermissionsCount = DB::table('model_has_roles')
+            ->where('role_id', $role->id)
+            ->count();
+
+        if ($modelHasPermissionsCount > 0) {
+            return response()->json(['error' => 'Cannot update role, it is still used in model_has_roles'], 422);
+        }
+
+        $query = $role->delete();
+
+        if ($query) {
+            return response()->json(['success' => 'Role deleted successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Role deleted failed'], 500);
+        }
+    }
+    public function edituser(string $id)
+    {
+        $role = Role::findOrFail($id);
+
+        $users = User::whereHas('roles', function ($query) use ($role) {
+            $query->where('name', $role->name);
+        })->get();
+
+        return view('pages.role_management.update_user', [
+            'title' => 'Update Role User Management',
+            'data' => $role,
+            'user' => $users,
+        ]);
+    }
+
+
+    public function updateuser()
+    {
     }
 }

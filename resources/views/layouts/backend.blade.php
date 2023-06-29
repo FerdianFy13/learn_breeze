@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title }} || Modernize</title>
+    <title>{{ $title }} || Nelayan Kita</title>
 
     {{-- icon --}}
     <link rel="shortcut icon" type="image/png" href="{{ asset('dist/images/logos/favicon.png') }}" />
@@ -14,6 +14,11 @@
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('dist/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/css/data_tables.css') }}" />
+    <style>
+        #formInsert .select2 {
+            width: 100% !important;
+        }
+    </style>
     {{-- end css --}}
 
     {{-- cdn --}}

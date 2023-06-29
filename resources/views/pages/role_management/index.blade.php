@@ -22,12 +22,15 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="usermanagement" class="table" style="width:100%">
+                        <a href="/role/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
+                                class="ti ti-plus me-1"></i>Add {{ $title }}</a>
+
+                        <table id="product" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
                                     <th>Role Name</th>
-                                    <th>Permission</th>
+                                    <th>Guard</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,16 +45,8 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
-                                                                class="ti ti-tools me-1 text-black"></i>Edit Permission</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
+                                                            href="{{ route('role.edit', $item->id) }}"><i
                                                                 class="ti ti-edit me-1 text-black"></i>Edit Role</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
-                                                                class="ti ti-pencil me-1 text-black"></i>Edit User</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -63,11 +58,11 @@
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('user.show', $item->id) }}"><i
+                                                            href="{{ route('role.show', $item->id) }}"><i
                                                                 class="ti ti-info-circle me-1 text-black"></i>Detail</a>
                                                     </li>
                                                     <form id="formDelete" method="post"
-                                                        action="{{ route('user.destroy', $item->id) }}">
+                                                        action="{{ route('role.destroy', $item->id) }}">
                                                         @method('delete')
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $item->id }}">
@@ -80,7 +75,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->guard_name }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -92,4 +87,68 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.deleteButton').click(function(e) {
+                e.preventDefault();
+
+                var itemId = $(this).closest('form').find('input[name="id"]').val();
+                var form = $(this).closest('form');
+
+                Swal.fire({
+                    icon: 'question',
+                    title: 'Are you sure?',
+                    text: "you want to delete this item!",
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete!',
+                    cancelButtonText: 'Cancel',
+                    confirmButtonColor: '#0F345E',
+                    cancelButtonColor: '#BB1F26',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: form.attr('action'),
+                            type: 'POST',
+                            data: {
+                                _token: $('meta[name="csrf-token"]').attr('content'),
+                                _method: 'DELETE',
+                                item_id: itemId
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: 'Success',
+                                    text: 'Delete data successfully',
+                                    icon: 'success',
+                                    confirmButtonColor: '#0F345E',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            },
+                            error: function(xhr, status, error) {
+                                if (xhr.status === 422) {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Cannot delete item. It is still used in other records.',
+                                        icon: 'error',
+                                        confirmButtonColor: '#0F345E',
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Delete data failed',
+                                        icon: 'error',
+                                        confirmButtonColor: '#0F345E',
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
