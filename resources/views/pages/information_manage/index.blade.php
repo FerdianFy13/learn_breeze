@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <a href="/products/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
+                        <a href="/information/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
                                 class="ti ti-plus me-1"></i>Add {{ $title }}</a>
 
                         <table id="category" class="table" style="width:100%">
