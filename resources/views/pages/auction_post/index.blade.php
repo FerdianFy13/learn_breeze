@@ -59,12 +59,12 @@
                             aria-labelledby="auction-tab" tabindex="0">
                             @include('pages.auction_post.v_auction')
                         </div>
-                        <div class="tab-pane fade show active" id="transaction-tab-pane" role="tabpanel"
+                        <div class="tab-pane fade" id="transaction-tab-pane" role="tabpanel"
                             aria-labelledby="transaction-tab" tabindex="0">
                             @include('pages.auction_post.v_transaction')
                         </div>
-                        <div class="tab-pane fade show active" id="datas-tab-pane" role="tabpanel"
-                            aria-labelledby="datas-tab" tabindex="0">
+                        <div class="tab-pane fade" id="datas-tab-pane" role="tabpanel" aria-labelledby="datas-tab"
+                            tabindex="0">
                             @include('pages.auction_post.v_datas')
                         </div>
                     </div>
@@ -81,6 +81,15 @@
                 pane.classList.remove('show');
             }
         });
+
+        document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((el) => {
+            el.addEventListener('shown.bs.tab', () => {
+                DataTable.tables({
+                    visible: true,
+                    api: true
+                }).columns.adjust();
+            });
+        })
     </script>
 
     {{-- <script>

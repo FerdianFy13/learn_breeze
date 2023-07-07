@@ -13,17 +13,20 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#auction-category").DataTable({
         scrollX: true,
+        scrollCollapse: true,
     });
 });
 
 $(document).ready(function () {
     $("#transaction-category").DataTable({
         scrollX: true,
+        scrollCollapse: true,
     });
 });
 
 $(document).ready(function () {
     $("#datas-category").DataTable({
         scrollX: true,
+        scrollCollapse: true,
     });
 });

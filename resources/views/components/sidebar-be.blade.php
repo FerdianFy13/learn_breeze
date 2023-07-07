@@ -117,6 +117,8 @@
                             <span class="hide-menu">Manage Fisherman</span>
                         </a>
                     </li>
+                @endrole
+                @role('Supervisor|Agency')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Post</span>
@@ -131,7 +133,7 @@
                         </a>
                     </li>
                 @endrole
-                @role('Supervisor')
+                @role('Supervisor|Agency')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Information</span>
@@ -145,6 +147,8 @@
                             <span class="hide-menu">Manage Information</span>
                         </a>
                     </li>
+                @endrole
+                @role('Supervisor')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">UMKM Product</span>
