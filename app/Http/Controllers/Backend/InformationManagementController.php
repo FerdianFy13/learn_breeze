@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Information;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -41,12 +42,14 @@ class InformationManagementController extends Controller
     {
         try {
             $validation = $request->validate([
-                'user_id' => 'required|exists:users,id',
+                // 'user_id' => 'required|exists:users,id',
                 'title' => 'required|unique:information|max:255|min:3',
                 'description' => 'required|max:255|min:3',
                 'available' => 'required',
                 'image' => 'required|image|file|max:4020',
             ]);
+
+            $validation['user_id'] = Auth::id();
 
             if ($request->file('image')) {
                 $validation['image'] = $request
@@ -100,7 +103,7 @@ class InformationManagementController extends Controller
     {
         try {
             $validation = $request->validate([
-                'user_id' => 'sometimes|required|exists:users,id',
+                // 'user_id' => 'sometimes|required|exists:users,id',
                 'title' => [
                     'sometimes', 'required', Rule::unique('information', 'title')->ignore($id), 'max:255', 'min:3',
                 ],
@@ -108,6 +111,8 @@ class InformationManagementController extends Controller
                 'available' => 'sometimes|required',
                 'image' => 'sometimes|required|image|file|max:4020',
             ]);
+
+            $validation['user_id'] = Auth::id();
 
             $product = Information::findOrFail($id);
             $oldImage = $product->image;

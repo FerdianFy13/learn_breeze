@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AuctionController;
 use App\Http\Controllers\Backend\AuctionPostController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\FishermanController;
 use App\Http\Controllers\Backend\InformationManagementController;
 use App\Http\Controllers\Backend\PermissionManagementController;
 use App\Http\Controllers\Backend\ProductController;
@@ -40,8 +41,8 @@ Route::group(['middleware' => ['role:Administrator|Super Administrator']], funct
 
 // @Supervisor roles
 Route::group(['middleware' => ['role:Supervisor|Agency']], function () {
+    Route::resource('/fisherman', FishermanController::class);
     Route::resource('/post', AuctionPostController::class);
-    Route::resource('/auction', AuctionController::class);
     Route::resource('/transaction', TransactionAgencyController::class);
     Route::resource('/information', InformationManagementController::class);
 });

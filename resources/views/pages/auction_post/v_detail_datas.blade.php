@@ -13,7 +13,7 @@
                     </div>
                     <div>
                         <div class="mb-3 row">
-                            <label for="inputCategory" class="col-sm-2 col-form-label">User</label>
+                            <label for="inputCategory" class="col-sm-2 col-form-label">Modified By</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputCategory" required name="category"
                                     value="{{ old('category', $data->user->name) }}" readonly>

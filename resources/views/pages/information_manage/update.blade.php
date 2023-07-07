@@ -22,7 +22,7 @@
                                         value="{{ old('title', $data->title) }}">
                                 </div>
                             </div>
-                            <div class="mb-3 row">
+                            {{-- <div class="mb-3 row">
                                 <label for="inputUser" class="col-sm-2 col-form-label">User</label>
                                 <div class="col-sm-10">
                                     <div class="mt-1">
@@ -41,7 +41,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="mb-3 row">
                                 <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col-sm-10">
