@@ -9,6 +9,7 @@ use App\Models\User;
 // use App\Models\AuctionPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -36,10 +37,19 @@ class AuctionPostController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('Supervisor')) {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('pages.auction_post.v_insert_datas', [
             'title' => 'Insert Datas Post',
             'data' => User::all(),
         ]);
+
+        // return view('pages.auction_post.v_insert_datas', [
+        //     'title' => 'Insert Datas Post',
+        //     'data' => User::all(),
+        // ]);
     }
 
     /**
@@ -48,6 +58,10 @@ class AuctionPostController extends Controller
     public function store(Request $request)
     {
         try {
+            if (!Gate::allows('Supervisor')) {
+                abort(403, 'Unauthorized action.');
+            }
+
             $validation = $request->validate([
                 'user_id' => 'required|exists:users,id',
                 'product_name' => 'required|unique:products|max:255|min:3',
@@ -172,6 +186,10 @@ class AuctionPostController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Gate::allows('Supervisor')) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $query = AuctionPost::findOrFail($id);
         $oldImage = $query->image;
 

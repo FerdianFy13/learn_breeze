@@ -20,7 +20,7 @@ class InformationManagementController extends Controller
     {
         return view('pages.information_manage.index', [
             'title' => 'Information Management',
-            'data' => Information::with('user')->orderBy('title', 'asc')->get(),
+            'data' => Information::with('user')->where('user_id', Auth::user()->id)->orderBy('title', 'asc')->get(),
         ]);
     }
 

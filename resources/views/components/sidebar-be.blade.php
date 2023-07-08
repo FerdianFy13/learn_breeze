@@ -117,6 +117,17 @@
                             <span class="hide-menu">Manage Fisherman</span>
                         </a>
                     </li>
+                    @role('Agency')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}"
+                                href="/products" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-building-store"></i>
+                                </span>
+                                <span class="hide-menu">Manage Fish Price</span>
+                            </a>
+                        </li>
+                    @endrole
                 @endrole
                 @role('Supervisor|Agency')
                     <li class="nav-small-cap">

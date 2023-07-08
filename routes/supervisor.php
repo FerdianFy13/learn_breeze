@@ -11,6 +11,5 @@ use Illuminate\Support\Facades\Route;
 // @Supervisor roles
 Route::group(['middleware' => ['role:Supervisor']], function () {
     Route::resource('/auction', AuctionController::class);
-    Route::resource('/products', ProductManagementController::class);
 });
 // end @Supervisor roles
