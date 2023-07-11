@@ -37,51 +37,109 @@
         <div class="col-lg-12 d-flex align-items-strech">
             <div class="card w-100">
                 <div class="card-body">
-                    <ul class="nav nav-pills" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="auction-tab" data-bs-toggle="tab"
-                                data-bs-target="#auction-tab-pane" type="button" role="tab"
-                                aria-controls="auction-tab-pane" aria-selected="true">Auction Post</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="transaction-tab" data-bs-toggle="tab"
-                                data-bs-target="#transaction-tab-pane" type="button" role="tab"
-                                aria-controls="transaction-tab-pane" aria-selected="false">Transaction Post</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="datas-tab" data-bs-toggle="tab" data-bs-target="#datas-tab-pane"
-                                type="button" role="tab" aria-controls="datas-tab-pane" aria-selected="false">Data
-                                Post</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content mt-4" id="myTabContent">
-                        <div class="tab-pane fade show active" id="auction-tab-pane" role="tabpanel"
-                            aria-labelledby="auction-tab" tabindex="0">
-                            @include('pages.auction_post.v_auction')
+                    @role('Supervisor')
+                        <ul class="nav nav-pills" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="auction-tab" data-bs-toggle="tab"
+                                    data-bs-target="#auction-tab-pane" type="button" role="tab"
+                                    aria-controls="auction-tab-pane" aria-selected="true">Auction Post</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="transaction-tab" data-bs-toggle="tab"
+                                    data-bs-target="#transaction-tab-pane" type="button" role="tab"
+                                    aria-controls="transaction-tab-pane" aria-selected="false">Transaction Post</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="datas-tab" data-bs-toggle="tab" data-bs-target="#datas-tab-pane"
+                                    type="button" role="tab" aria-controls="datas-tab-pane" aria-selected="false">Data
+                                    Post</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-4" id="myTabContent">
+                            <div class="tab-pane fade show active" id="auction-tab-pane" role="tabpanel"
+                                aria-labelledby="auction-tab" tabindex="0">
+                                @include('pages.auction_post.v_auction')
+                            </div>
+                            <div class="tab-pane fade" id="transaction-tab-pane" role="tabpanel"
+                                aria-labelledby="transaction-tab" tabindex="0">
+                                @include('pages.auction_post.v_transaction')
+                            </div>
+                            <div class="tab-pane fade" id="datas-tab-pane" role="tabpanel" aria-labelledby="datas-tab"
+                                tabindex="0">
+                                @include('pages.auction_post.v_datas')
+                            </div>
                         </div>
-                        <div class="tab-pane fade show active" id="transaction-tab-pane" role="tabpanel"
-                            aria-labelledby="transaction-tab" tabindex="0">
-                            @include('pages.auction_post.v_transaction')
+                    @endrole
+                    @role('Agency')
+                        <ul class="nav nav-pills" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="transaction2-tab" data-bs-toggle="tab"
+                                    data-bs-target="#transaction2-tab-pane" type="button" role="tab"
+                                    aria-controls="transaction2-tab-pane" aria-selected="true">Transaction Post</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="datas2-tab" data-bs-toggle="tab" data-bs-target="#datas2-tab-pane"
+                                    type="button" role="tab" aria-controls="datas2-tab-pane" aria-selected="false">Data
+                                    Post</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-4" id="myTabContent">
+                            <div class="tab-pane fade show active" id="transaction2-tab-pane" role="tabpanel"
+                                aria-labelledby="transaction2-tab" tabindex="0">
+                                @include('pages.auction_post.v_transaction')
+                            </div>
+                            <div class="tab-pane fade" id="datas2-tab-pane" role="tabpanel" aria-labelledby="datas2-tab"
+                                tabindex="0">
+                                @include('pages.auction_post.v_datas')
+                            </div>
                         </div>
-                        <div class="tab-pane fade show active" id="datas-tab-pane" role="tabpanel"
-                            aria-labelledby="datas-tab" tabindex="0">
-                            @include('pages.auction_post.v_datas')
-                        </div>
-                    </div>
+                    @endrole
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        const tabPanes = document.querySelectorAll('.tab-pane');
+    @role('Supervisor')
+        <script>
+            const tabPanes = document.querySelectorAll('.tab-pane');
 
-        tabPanes.forEach(pane => {
-            if (pane.id !== 'auction-tab-pane') {
-                pane.classList.remove('show');
-            }
-        });
-    </script>
+            tabPanes.forEach(pane => {
+                if (pane.id !== 'auction-tab-pane') {
+                    pane.classList.remove('show');
+                }
+            });
+
+            document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((el) => {
+                el.addEventListener('shown.bs.tab', () => {
+                    DataTable.tables({
+                        visible: true,
+                        api: true
+                    }).columns.adjust();
+                });
+            })
+        </script>
+    @endrole
+
+    @role('Agency')
+        <script>
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabPanes.forEach(pane => {
+                if (pane.id !== 'transaction2-tab-pane') {
+                    pane.classList.remove('show');
+                }
+            });
+
+            document.querySelectorAll('button[data-bs-toggle="tab"]').forEach((el) => {
+                el.addEventListener('shown.bs.tab', () => {
+                    DataTable.tables({
+                        visible: true,
+                        api: true
+                    }).columns.adjust();
+                });
+            })
+        </script>
+    @endrole
 
     {{-- <script>
         $(document).ready(function() {

@@ -4,8 +4,10 @@
     </div>
 </div>
 <div class="table-responsive">
-    <a href="/transaction/create" class="text-decoration-none btn btn-outline-dark mb-3"><i class="ti ti-plus me-1"></i>Add
-        {{ $title_b }}</a>
+    @role('Supervisor')
+        <a href="/transaction/create" class="text-decoration-none btn btn-outline-dark mb-3"><i class="ti ti-plus me-1"></i>Add
+            {{ $title_b }}</a>
+    @endrole
 
     <table id="transaction-category" class="table" style="width:100%">
         <thead class="table-light">
@@ -22,30 +24,37 @@
         <tbody>
             @foreach ($transaction as $item)
                 <tr>
-                    <td class="action-links">
-                        <a href="{{ route('transaction.edit', $item->id) }}"
-                            class="text-decoration-none btn btn-outline-dark mb-3">Edit</a>
-                        <div class="dropdown">
-                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="moreActionsDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                More
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
-                                <li><a class="dropdown-item" href="{{ route('transaction.show', $item->id) }}"><i
-                                            class="ti ti-info-circle me-1 text-black"></i>Detail</a>
-                                </li>
-                                <form id="formDelete" method="post"
-                                    action="{{ route('transaction.destroy', $item->id) }}">
-                                    @method('delete')
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <li><button class="dropdown-item deleteButton"><i
-                                                class="ti ti-trash text-black me-1"
-                                                onclick="confirm?"></i>Delete</button>
+                    @role('Supervisor')
+                        <td class="action-links">
+                            <a href="{{ route('transaction.edit', $item->id) }}"
+                                class="text-decoration-none btn btn-outline-dark mb-3">Edit</a>
+
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="moreActionsDropdown"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    More
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="moreActionsDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('transaction.show', $item->id) }}"><i
+                                                class="ti ti-info-circle me-1 text-black"></i>Detail</a>
                                     </li>
-                                </form>
-                            </ul>
-                        </div>
+                                    <form id="formDelete" method="post"
+                                        action="{{ route('transaction.destroy', $item->id) }}">
+                                        @method('delete')
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <li><button class="dropdown-item deleteButton"><i
+                                                    class="ti ti-trash text-black me-1"
+                                                    onclick="confirm?"></i>Delete</button>
+                                        </li>
+                                    </form>
+                                </ul>
+                            </div>
+                        </td>
+                    @endrole
+                    <td>
+                        <a href="{{ route('transaction.show', $item->id) }}"
+                            class="text-decoration-none btn btn-outline-dark mb-3">Detail</a>
                     </td>
                     <td>{{ Str::limit($item->transaction_number, 20) }}</td>
                     <td>{!! Str::limit($item->partner->person_responsible, 20) !!}</td>

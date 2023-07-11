@@ -15,26 +15,24 @@
                             action="{{ route('post.update', $data->id) }}">
                             @method('patch')
                             @csrf
-                            <div class="mb-3 row">
+                            {{-- <div class="mb-3 row">
                                 <label for="inputUser" class="col-sm-2 col-form-label">User</label>
                                 <div class="col-sm-10">
                                     <div class="mt-1">
-                                        <select class="form-control" name="user_id" required>
+                                        <select class="form-control" name="user_id" required aria-readonly="true">
                                             <option selected>Please select user name</option>
                                             @foreach ($user as $item)
-                                                @if ($item->hasRole('Supervisor'))
-                                                    @if (old('user_id', $data->user_id) == $item->id)
-                                                        <option value="{{ $item->id }}" selected>{{ $item->name }}
-                                                        </option>
-                                                    @else
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                    @endif
+                                                @if (old('user_id', $data->user_id) == $item->id)
+                                                    <option value="{{ $item->id }}" selected>{{ $item->name }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="mb-3 row">
                                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">

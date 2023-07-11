@@ -8,6 +8,8 @@ use App\Models\TransactionAgency;
 use App\Models\User;
 // use App\Models\AuctionPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -35,10 +37,19 @@ class AuctionPostController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('Supervisor')) {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('pages.auction_post.v_insert_datas', [
             'title' => 'Insert Datas Post',
             'data' => User::all(),
         ]);
+
+        // return view('pages.auction_post.v_insert_datas', [
+        //     'title' => 'Insert Datas Post',
+        //     'data' => User::all(),
+        // ]);
     }
 
     /**
@@ -47,6 +58,10 @@ class AuctionPostController extends Controller
     public function store(Request $request)
     {
         try {
+            if (!Gate::allows('Supervisor')) {
+                abort(403, 'Unauthorized action.');
+            }
+
             $validation = $request->validate([
                 'user_id' => 'required|exists:users,id',
                 'product_name' => 'required|unique:products|max:255|min:3',
@@ -118,7 +133,7 @@ class AuctionPostController extends Controller
                 'product_name' => [
                     'sometimes', 'required', Rule::unique('auction_posts', 'product_name')->ignore($id), 'max:255', 'min:3',
                 ],
-                'user_id' => 'sometimes|required|exists:users,id',
+                // 'user_id' => 'sometimes|required|exists:users,id',
                 'product_name' => 'sometimes|required|unique:products|max:255|min:3',
                 'description' => 'sometimes|required|max:255|min:3',
                 'open_price' => [
@@ -134,6 +149,7 @@ class AuctionPostController extends Controller
                 'image' => 'sometimes|required|image|file|max:4020',
             ]);
 
+            $validation['user_id'] = Auth::id();
             $product = AuctionPost::findOrFail($id);
             $oldImage = $product->image;
 
@@ -170,6 +186,10 @@ class AuctionPostController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Gate::allows('Supervisor')) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $query = AuctionPost::findOrFail($id);
         $oldImage = $query->image;
 

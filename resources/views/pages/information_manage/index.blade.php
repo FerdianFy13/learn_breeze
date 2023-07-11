@@ -65,8 +65,8 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td>{!! Str::limit($item->user->name, 20) !!}</td>
                                         <td>{{ Str::limit($item->title, 20) }}</td>
+                                        <td>{!! Str::limit($item->user->name, 20) !!}</td>
                                         <td>{!! Str::limit($item->description, 20) !!}</td>
                                         <td>{!! Str::limit($item->available, 20) !!}</td>
                                     </tr>

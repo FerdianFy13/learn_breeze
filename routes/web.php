@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\AuctionPostController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\PermissionManagementController;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\RoleManagementController;
+use App\Http\Controllers\Backend\FishermanController;
+use App\Http\Controllers\Backend\InformationManagementController;
+use App\Http\Controllers\Backend\ProductManagementController;
+use App\Http\Controllers\Backend\TransactionAgencyController;
 use App\Http\Controllers\Backend\UserManagemenController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,16 @@ Route::group(['middleware' => ['role:Administrator|Super Administrator']], funct
     Route::get('/user/{id}/edituser', [UserManagemenController::class, 'edituser'])->name('user.edituser');
     Route::put('/user/{id}/edituser', [UserManagemenController::class, 'updateuser'])->name('user.updateuser');
 });
+
+// @Supervisor roles
+Route::group(['middleware' => ['role:Supervisor|Agency']], function () {
+    Route::resource('/fisherman', FishermanController::class);
+    Route::resource('/post', AuctionPostController::class);
+    Route::resource('/transaction', TransactionAgencyController::class);
+    Route::resource('/information', InformationManagementController::class);
+    Route::resource('/products', ProductManagementController::class);
+});
+// end @Supervisor roles
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/super_admin.php';

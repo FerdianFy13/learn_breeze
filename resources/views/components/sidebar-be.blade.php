@@ -103,7 +103,7 @@
                         </a>
                     </li>
                 @endrole
-                @role('Supervisor')
+                @role('Supervisor|Agency')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Fisherman</span>
@@ -117,6 +117,19 @@
                             <span class="hide-menu">Manage Fisherman</span>
                         </a>
                     </li>
+                    @role('Agency')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}"
+                                href="/products" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-building-store"></i>
+                                </span>
+                                <span class="hide-menu">Manage Fish Price</span>
+                            </a>
+                        </li>
+                    @endrole
+                @endrole
+                @role('Supervisor|Agency')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Post</span>
@@ -131,7 +144,7 @@
                         </a>
                     </li>
                 @endrole
-                @role('Supervisor')
+                @role('Supervisor|Agency')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Information</span>
@@ -145,6 +158,8 @@
                             <span class="hide-menu">Manage Information</span>
                         </a>
                     </li>
+                @endrole
+                @role('Supervisor')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">UMKM Product</span>
