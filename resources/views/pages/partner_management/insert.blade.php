@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Insert Table Partner Management</h5>
+                            <h5 class="card-title fw-semibold">Tambah Tabel Manajemen Mitra</h5>
                         </div>
                     </div>
                     <div>
@@ -18,7 +18,7 @@
                                 <div class="col-sm-10">
                                     <div class="mt-1">
                                         <select class="form-control" name="user_id" required>
-                                            <option selected>Please select user name</option>
+                                            <option selected>Silahkan pilih nama user</option>
                                             @foreach ($data as $item)
                                                 @if ($item->hasRole('Partner'))
                                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -29,14 +29,14 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPerson" class="col-sm-2 col-form-label">Person Responsible</label>
+                                <label for="inputPerson" class="col-sm-2 col-form-label">Penanggung Jawab</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="inputPerson" required
                                         name="person_responsible" value="{{ old('person_responsible') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+                                <label for="inputAddress" class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="hidden" name="address" id="inputAddress" required
                                         value="{{ old('address') }}">
@@ -44,38 +44,38 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputPhone" class="col-sm-2 col-form-label">Phone Number</label>
+                                <label for="inputPhone" class="col-sm-2 col-form-label">Nomer Telepon</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="inputPhone" required name="phone_number"
-                                        value="{{ old('phone_number') }}">
+                                        placeholder="6281345678902" value="{{ old('phone_number') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputBusiness" class="col-sm-2 col-form-label">Business Type</label>
+                                <label for="inputBusiness" class="col-sm-2 col-form-label">Jenis Usaha</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="inputBusiness" required
                                         name="business_type" value="{{ old('business_type') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="inputAvailable" class="col-sm-2 col-form-label">Available</label>
+                                <label for="inputAvailable" class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="available" id="inputEnabled"
                                             value="Enabled" required checked
                                             {{ old('available') == 'Enabled' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="inputEnabled">Enabled</label>
+                                        <label class="form-check-label" for="inputEnabled">Aktif</label>
                                     </div>
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="available" id="inputDisabled"
                                             value="Disabled" required {{ old('available') == 'Disabled' ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="inputDisabled">Disabled</label>
+                                        <label class="form-check-label" for="inputDisabled">Tidak Aktif</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="float-end">
-                                <a href="/partner" class="btn btn-outline-dark me-2">Cancel</a>
-                                <button type="submit" class="btn btn-danger">Save changes</button>
+                                <a href="/partner" class="btn btn-outline-dark me-2">Batal</a>
+                                <button type="submit" class="btn btn-danger">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>
@@ -131,11 +131,11 @@
 
             Swal.fire({
                 icon: 'question',
-                title: 'Are you sure?',
-                text: 'Make sure all the data entered is correct',
+                title: 'Apakah anda yakin?',
+                text: 'Pastikan semua data yang dimasukkan sudah benar',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, I sure',
-                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Iya, Saya yakin',
+                cancelButtonText: 'Batal',
                 confirmButtonColor: '#0F345E',
                 cancelButtonColor: '#BB1F26',
                 reverseButtons: true
@@ -150,8 +150,8 @@
                         processData: false,
                         success: function(response) {
                             Swal.fire({
-                                title: 'Success',
-                                text: 'Insert data successfully',
+                                title: 'Berhasil',
+                                text: 'Tambah data berhasil',
                                 icon: 'success',
                                 confirmButtonColor: '#0F345E',
                             }).then((result) => {
@@ -175,8 +175,8 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    title: 'Error',
-                                    text: 'Insert data failed',
+                                    title: 'Gagal',
+                                    text: 'Tambah data gagal',
                                     icon: 'error',
                                     confirmButtonColor: '#0F345E',
                                 });

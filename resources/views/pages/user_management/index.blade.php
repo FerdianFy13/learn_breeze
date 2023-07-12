@@ -28,7 +28,7 @@
 
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Table {{ $title }}</h5>
+                            <h5 class="card-title fw-semibold">Tabel {{ $title }}</h5>
                         </div>
                     </div>
                     <div class="table-responsive">

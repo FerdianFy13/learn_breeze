@@ -19,7 +19,7 @@ class PartnerManagementController extends Controller
     public function index()
     {
         return view('pages.partner_management.index', [
-            'title' => 'Partner Management',
+            'title' => 'Manajemen Mitra',
             'data' => Partner::with('user')->get(),
         ]);
     }
@@ -30,7 +30,7 @@ class PartnerManagementController extends Controller
     public function create()
     {
         return view('pages.partner_management.insert', [
-            'title' => 'Insert Partner Management',
+            'title' => 'Tambah Manajemen Mitra',
             'data' => User::all(),
         ]);
     }

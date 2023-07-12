@@ -7,8 +7,8 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Detail Table Partner Management</h5>
-                            <a href="/partner" class="btn btn-outline-dark me-2 mt-3">Back</a>
+                            <h5 class="card-title fw-semibold">Detail Tabel Management Mitra</h5>
+                            <a href="/partner" class="btn btn-outline-dark me-2 mt-3">Kembali</a>
                         </div>
                     </div>
                     <div>
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputPerson" class="col-sm-2 col-form-label">Person Responsible</label>
+                            <label for="inputPerson" class="col-sm-2 col-form-label">Penanggung Jawab</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputPerson" required
                                     name="person_responsible"
@@ -28,30 +28,34 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+                            <label for="inputAddress" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="description" rows="3" id="inputAddress" required readonly>{!! strip_tags($data->address) !!}</textarea>
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputPhone" class="col-sm-2 col-form-label">Phone Number</label>
+                            <label for="inputPhone" class="col-sm-2 col-form-label">Nomer Telepon</label>
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" id="inputPhone" required name="phone_number"
                                     value="{{ old('phone_number', $data->phone_number) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputBusiness" class="col-sm-2 col-form-label">Business Type</label>
+                            <label for="inputBusiness" class="col-sm-2 col-form-label">Jenis Usaha</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputBusiness" required name="business_type"
                                     value="{{ old('business_type', $data->business_type) }}" readonly>
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="inputAvailable" class="col-sm-2 col-form-label">Available</label>
+                            <label for="inputAvailable" class="col-sm-2 col-form-label">Status</label>
                             <div class="col-sm-10">
+                                {{-- <input type="text" class="form-control" id="inputStock" required name="available"
+                                    value="{{ old('available', $data->available) }}" readonly> --}}
                                 <input type="text" class="form-control" id="inputStock" required name="available"
-                                    value="{{ old('available', $data->available) }}" readonly>
+                                    value="{{ old('available', $data->available === 'Enabled' ? 'Aktif' : 'Tidak Aktif') }}"
+                                    readonly>
+
                             </div>
                         </div>
                     </div>

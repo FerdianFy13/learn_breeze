@@ -18,23 +18,23 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Table {{ $title }}</h5>
+                            <h5 class="card-title fw-semibold">Tabel {{ $title }}</h5>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <a href="/partner/create" class="text-decoration-none btn btn-outline-dark mb-3"><i
-                                class="ti ti-plus me-1"></i>Add {{ $title }}</a>
+                                class="ti ti-plus me-1"></i>Tambah {{ $title }}</a>
 
                         <table id="product" class="table" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
                                     <th>User</th>
-                                    <th>Person Responsible</th>
-                                    <th>Address</th>
-                                    <th>Phone Number</th>
-                                    <th>Business Type</th>
-                                    <th>Available</th>
+                                    <th>Penanggung Jawab</th>
+                                    <th>Alamat</th>
+                                    <th>Telepon</th>
+                                    <th>Jenis Usaha</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,7 +42,7 @@
                                     <tr>
                                         <td class="action-links">
                                             <a href="{{ route('partner.edit', $item->id) }}"
-                                                class="text-decoration-none btn btn-outline-dark mb-3">Edit</a>
+                                                class="text-decoration-none btn btn-outline-dark mb-3">Ubah</a>
                                             <div class="dropdown">
                                                 <button class="btn btn-outline-dark dropdown-toggle" type="button"
                                                     id="moreActionsDropdown" data-bs-toggle="dropdown"
@@ -61,7 +61,7 @@
                                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                                         <li><button class="dropdown-item deleteButton"><i
                                                                     class="ti ti-trash text-black me-1"
-                                                                    onclick="confirm?"></i>Delete</button>
+                                                                    onclick="confirm?"></i>Hapus</button>
                                                         </li>
                                                     </form>
                                                 </ul>
@@ -77,7 +77,16 @@
                                             </a>
                                         </td>
                                         <td>{{ Str::limit($item->business_type, 20) }}</td>
-                                        <td>{{ $item->available }}</td>
+                                        <td>
+                                            @if ($item->available === 'Enabled')
+                                                Aktif
+                                            @elseif ($item->available === 'Disabled')
+                                                Tidak Aktif
+                                            @else
+                                                Status tidak valid
+                                            @endif
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -98,11 +107,11 @@
 
                 Swal.fire({
                     icon: 'question',
-                    title: 'Are you sure?',
-                    text: "you want to delete this item!",
+                    title: 'Apakah anda yakin?',
+                    text: "anda ingin menghapus item ini!",
                     showCancelButton: true,
-                    confirmButtonText: 'Yes, delete!',
-                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Iya, hapus!',
+                    cancelButtonText: 'Batal',
                     confirmButtonColor: '#0F345E',
                     cancelButtonColor: '#BB1F26',
                     reverseButtons: true
@@ -118,8 +127,8 @@
                             },
                             success: function(response) {
                                 Swal.fire({
-                                    title: 'Success',
-                                    text: 'Delete data successfully',
+                                    title: 'Berhasil',
+                                    text: 'Hapus data berhasil',
                                     icon: 'success',
                                     confirmButtonColor: '#0F345E',
                                 }).then((result) => {
@@ -131,22 +140,22 @@
                             error: function(xhr, status, error) {
                                 if (xhr.status === 422) {
                                     Swal.fire({
-                                        title: 'Error',
-                                        text: 'Partner cannot be deleted, because it is currently enabled.',
+                                        title: 'Gagal',
+                                        text: 'Mitra tidak dapat dihapus, karena status masih aktif.',
                                         icon: 'error',
                                         confirmButtonColor: '#0F345E',
                                     });
                                 } else if (xhr.status === 419) {
                                     Swal.fire({
-                                        title: 'Error',
-                                        text: 'Cannot delete item. It is still used in other records.',
+                                        title: 'Gagal',
+                                        text: 'Tidak dapat menghapus item. Item masih digunakan dalam tabel lain.',
                                         icon: 'error',
                                         confirmButtonColor: '#0F345E',
                                     });
                                 } else {
                                     Swal.fire({
-                                        title: 'Error',
-                                        text: 'Delete data failed',
+                                        title: 'Gagal',
+                                        text: 'Hapus data gagal',
                                         icon: 'error',
                                         confirmButtonColor: '#0F345E',
                                     });
