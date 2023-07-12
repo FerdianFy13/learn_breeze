@@ -19,7 +19,7 @@ class UserManagemenController extends Controller
     public function index()
     {
         return view('pages.user_management.index', [
-            'title' => 'User Management',
+            'title' => 'Manajemen User',
             'data' => User::with('role')->orderBy('name', 'asc')->get(),
         ]);
     }
@@ -48,7 +48,7 @@ class UserManagemenController extends Controller
         $user = User::findOrFail($id);
 
         return view('pages.user_management.detail', [
-            'title' => 'Detail User Management',
+            'title' => 'Detail Manajemen User',
             'data' => $user
         ]);
     }
@@ -62,7 +62,7 @@ class UserManagemenController extends Controller
         $role = Role::all();
 
         return view('pages.user_management.update', [
-            'title' => 'Update User Management',
+            'title' => 'Update Manajemen User',
             'data' => $user,
             'role' => $role,
         ]);
@@ -108,7 +108,7 @@ class UserManagemenController extends Controller
         $role = Role::all();
 
         return view('pages.user_management.update_user', [
-            'title' => 'Update Role User Management',
+            'title' => 'Update Role Manajemen User',
             'data' => $user,
             'role' => $role,
         ]);

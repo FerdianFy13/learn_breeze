@@ -7,8 +7,8 @@
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Detail Table User Management || {{ $data->name }}</h5>
-                            <a href="/user" class="btn btn-outline-dark me-2 mt-3">Back</a>
+                            <h5 class="card-title fw-semibold">Update Tabel Manajemen User || {{ $data->name }}</h5>
+                            <a href="/user" class="btn btn-outline-dark me-2 mt-3">Kembali</a>
                         </div>
                     </div>
                     <div>
@@ -47,8 +47,8 @@
                                 </div>
                             </div>
                             <div class="float-end">
-                                <a href="/user" class="btn btn-outline-dark me-2">Cancel</a>
-                                <button type="submit" class="btn btn-danger">Save changes</button>
+                                <a href="/user" class="btn btn-outline-dark me-2">Batal</a>
+                                <button type="submit" class="btn btn-danger">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>

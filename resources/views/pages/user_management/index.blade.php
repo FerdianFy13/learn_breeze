@@ -36,7 +36,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>Actions</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                 </tr>

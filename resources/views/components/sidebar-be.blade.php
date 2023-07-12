@@ -49,7 +49,7 @@
                 @role('Administrator|Super Administrator')
                     <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span class="hide-menu">Management</span>
+                        <span class="hide-menu">Manajemen</span>
                     </li>
                 @endrole
                 {{-- <li class="sidebar-item">
@@ -90,7 +90,7 @@
                             <span>
                                 <i class="ti ti-brand-docker"></i>
                             </span>
-                            <span class="hide-menu">Partner</span>
+                            <span class="hide-menu">Mitra</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -119,8 +119,8 @@
                     </li>
                     @role('Agency')
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}"
-                                href="/products" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}" href="/products"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-building-store"></i>
                                 </span>
