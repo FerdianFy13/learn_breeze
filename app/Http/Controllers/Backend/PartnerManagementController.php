@@ -147,7 +147,7 @@ class PartnerManagementController extends Controller
         } else if ($logoCount > 0) {
             return response()->json(['error' => 'Cannot delete partner, it is still used in logo'], 419);
         } else if ($transaction > 0) {
-            return response()->json(['error' => 'Cannot delete partner, it is still used in logo'], 419);
+            return response()->json(['error' => 'Cannot delete partner, it is still used in transaction'], 419);
         }
 
         $query = $data->delete();
