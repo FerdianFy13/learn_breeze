@@ -12,7 +12,9 @@ class AuctionDailyController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.auction_daily.index', [
+            'title' => 'Auction Activities'
+        ]);
     }
 
     /**

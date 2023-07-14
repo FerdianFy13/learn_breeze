@@ -30,8 +30,8 @@
                         <span class="hide-menu">Payment</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/role"
-                            aria-expanded="false">
+                        <a class="sidebar-link {{ Request::is('auction-daily*') ? 'sidebar-link active' : '' }}"
+                            href="/auction-daily" aria-expanded="false">
                             <span>
                                 <i class="ti ti-brand-airtable"></i>
                             </span>
