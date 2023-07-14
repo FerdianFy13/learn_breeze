@@ -47,6 +47,7 @@ class PartnerManagementController extends Controller
                 'available' => 'required',
                 'phone_number' => [
                     'required',
+                    'unique',
                     'min:11',
                     'max:13',
                     'not_in:0',
@@ -109,6 +110,7 @@ class PartnerManagementController extends Controller
                 'available' => 'required',
                 'phone_number' => [
                     'required',
+                    Rule::unique('partners', 'phone_number')->ignore($id),
                     'min:11',
                     'max:13',
                     'not_in:0',
