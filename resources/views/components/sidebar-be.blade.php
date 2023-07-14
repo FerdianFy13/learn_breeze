@@ -24,6 +24,30 @@
                         </a>
                     </li>
                 @endrole
+                @role('Partner')
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Payment</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/role"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-brand-airtable"></i>
+                            </span>
+                            <span class="hide-menu">Auction</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ Request::is('role*') ? 'sidebar-link active' : '' }}" href="/role"
+                            aria-expanded="false">
+                            <span>
+                                <i class="ti ti-nfc"></i>
+                            </span>
+                            <span class="hide-menu">Transaction</span>
+                        </a>
+                    </li>
+                @endrole
                 {{-- <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Post</span>
@@ -119,8 +143,8 @@
                     </li>
                     @role('Agency')
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}"
-                                href="/products" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}" href="/products"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-building-store"></i>
                                 </span>
@@ -165,8 +189,8 @@
                         <span class="hide-menu">UMKM Product</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}" href="/products"
-                            aria-expanded="false">
+                        <a class="sidebar-link {{ Request::is('products*') ? 'sidebar-link active' : '' }}"
+                            href="/products" aria-expanded="false">
                             <span>
                                 <i class="ti ti-building-store"></i>
                             </span>
