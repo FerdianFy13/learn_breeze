@@ -486,3 +486,14 @@
 1689306435-2884-1353780894,1689306435.1552,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,390.43617248535,request
 1689306476-0746-882262641,1689306475.9459,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,454.31590080261,request
 1689306527-2151-1801411412,1689306527.0986,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,406.65006637573,request
+1689330293-9877-2039800646,1689330293.679,GET,/partner/create,"App\Http\Controllers\Backend\PartnerManagementController@create",200,1039.4370555878,request
+1689330302-9779-1534300158,1689330302.7024,GET,/partner/create,"App\Http\Controllers\Backend\PartnerManagementController@create",200,572.30281829834,request
+1689330404-0398-1317568453,1689330403.7991,GET,/partner/create,"App\Http\Controllers\Backend\PartnerManagementController@create",200,602.59985923767,request
+1689330414-5115-2108495674,1689330414.2469,GET,/partner/create,"App\Http\Controllers\Backend\PartnerManagementController@create",200,606.79912567139,request
+1689330420-4936-1691614205,1689330420.2042,GET,/partner/create,"App\Http\Controllers\Backend\PartnerManagementController@create",200,785.8190536499,request
+1689330661-3158-1551907910,1689330660.999,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,730.80992698669,request
+1689330678-3262-1289609469,1689330677.8533,GET,/user,"App\Http\Controllers\Backend\UserManagemenController@index",200,1149.7480869293,request
+1689330680-2700-261141546,1689330680.041,GET,/logo,"App\Http\Controllers\Backend\LogoManagementController@index",200,559.650182724,request
+1689330713-8798-277469645,1689330713.6366,GET,/logo,,404,417.91105270386,request
+1689330718-4252-701690489,1689330718.213,GET,/user,"App\Http\Controllers\Backend\UserManagemenController@index",200,538.63191604614,request
+1689330720-6204-1444552481,1689330720.2553,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,750.2748966217,request

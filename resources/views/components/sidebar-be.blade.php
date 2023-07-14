@@ -117,7 +117,7 @@
                             <span class="hide-menu">Partner</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
+                    {{-- <li class="sidebar-item">
                         <a class="sidebar-link {{ Request::is('logo*') ? 'sidebar-link active' : '' }}" href="/logo"
                             aria-expanded="false">
                             <span>
@@ -125,7 +125,7 @@
                             </span>
                             <span class="hide-menu">Logo</span>
                         </a>
-                    </li>
+                    </li> --}}
                 @endrole
                 @role('Supervisor|Agency')
                     <li class="nav-small-cap">
