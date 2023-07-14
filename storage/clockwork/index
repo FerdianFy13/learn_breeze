@@ -146,3 +146,14 @@
 1689344066-6690-1374094979,1689344066.5205,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,307.61885643005,request
 1689344069-2107-855938882,1689344069.0888,GET,/post/create,"App\Http\Controllers\Backend\AuctionPostController@create",200,408.44416618347,request
 1689344072-7625-216180342,1689344072.601,GET,/post,"App\Http\Controllers\Backend\AuctionPostController@index",200,535.75015068054,request
+1689344241-9401-1835240214,1689344234.7998,GET,/logout,"App\Http\Controllers\Auth\AuthenticatedSessionController@destroy",302,14243.769884109,request
+1689344249-2649-739228037,1689344249.1209,GET,/,Closure,200,1515.4559612274,request
+1689344253-2880-233301908,1689344253.1608,GET,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@create",200,1777.5089740753,request
+1689344275-8103-1893561695,1689344275.6711,POST,/login,"App\Http\Controllers\Auth\AuthenticatedSessionController@store",302,1074.7971534729,request
+1689344276-9169-1925098715,1689344276.7827,GET,/dashboard,"App\Http\Controllers\Backend\DashboardController@index",200,858.42609405518,request
+1689344280-3464-972325744,1689344280.2092,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,394.55103874207,request
+1689344282-0267-2071832094,1689344281.8909,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,557.81197547913,request
+1689344303-5706-845085988,1689344303.4041,GET,/partner/1/edit,"App\Http\Controllers\Backend\PartnerManagementController@edit",200,367.4111366272,request
+1689344308-1748-1273094986,1689344307.981,PATCH,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@update",422,562.38603591919,request
+1689344321-2489-1007826913,1689344321.0953,PATCH,/partner/1,"App\Http\Controllers\Backend\PartnerManagementController@update",201,446.40707969666,request
+1689344322-5116-399169794,1689344322.3671,GET,/partner,"App\Http\Controllers\Backend\PartnerManagementController@index",200,297.0929145813,request

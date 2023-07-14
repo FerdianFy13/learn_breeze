@@ -50,7 +50,7 @@ class FishermanController extends Controller
                     'min:11',
                     'max:13',
                     'not_in:0',
-                    'regex:/^([1-9][0-9]*)$/'
+                    'regex:/^62([1-9][0-9]*)$/'
                 ],
                 'result_member' => [
                     'required',
@@ -122,7 +122,7 @@ class FishermanController extends Controller
                     'min:11',
                     'max:13',
                     'not_in:0',
-                    'regex:/^([1-9][0-9]*)$/'
+                    'regex:/^62([1-9][0-9]*)$/'
                 ],
                 'result_member' => [
                     'sometimes',
