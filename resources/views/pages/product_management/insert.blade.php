@@ -54,7 +54,7 @@
                                 <label for="inputPhone" class="col-sm-2 col-form-label">Phone Number</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="inputPhone" required name="phone_number"
-                                        value="{{ old('phone_number') }}">
+                                        placeholder="62 xxxxxxxxxxx" value="{{ old('phone_number') }}">
                                 </div>
                             </div>
                             <div class="mb-3 row">
