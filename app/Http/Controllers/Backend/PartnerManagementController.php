@@ -47,10 +47,11 @@ class PartnerManagementController extends Controller
                 'available' => 'required',
                 'phone_number' => [
                     'required',
+                    'unique',
                     'min:11',
                     'max:13',
                     'not_in:0',
-                    'regex:/^([1-9][0-9]*)$/'
+                    'regex:/^62([1-9][0-9]*)$/'
                 ],
                 'user_id' => 'required|exists:users,id|unique:partners',
                 'business_type' => 'required|max:255|min:3',
@@ -109,10 +110,11 @@ class PartnerManagementController extends Controller
                 'available' => 'required',
                 'phone_number' => [
                     'required',
+                    Rule::unique('partners', 'phone_number')->ignore($id),
                     'min:11',
                     'max:13',
                     'not_in:0',
-                    'regex:/^([1-9][0-9]*)$/'
+                    'regex:/^62([1-9][0-9]*)$/'
                 ],
                 'user_id' => [
                     'sometimes', 'required', Rule::unique('partners', 'user_id')->ignore($id), 'exists:users,id',

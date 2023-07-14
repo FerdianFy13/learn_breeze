@@ -56,7 +56,7 @@ class ProductManagementController extends Controller
                     'min:11',
                     'max:13',
                     'not_in:0',
-                    'regex:/^([1-9][0-9]*)$/'
+                    'regex:/^62([1-9][0-9]*)$/'
                 ],
                 'instagram' => 'required|url|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_]+\/?$/',
                 'available' => 'required',
@@ -134,7 +134,7 @@ class ProductManagementController extends Controller
                     'min:11',
                     'max:13',
                     'not_in:0',
-                    'regex:/^([1-9][0-9]*)$/'
+                    'regex:/^62([1-9][0-9]*)$/'
                 ],
                 'instagram' => 'sometimes|required|url|regex:/^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_]+\/?$/',
                 'available' => 'sometimes|required',
